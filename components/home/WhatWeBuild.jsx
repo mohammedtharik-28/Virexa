@@ -1,11 +1,18 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import {
+    FaLightbulb,
+    FaComputer,
+    FaGlobe,
+    FaCartShopping
+} from "react-icons/fa6";
 
 function WhatWeBuild() {
 
     const solutions = [
         {
             title: "AI Solutions for Real Work",
+            icon: FaLightbulb,
             description:
                 "We build AI-powered applications that automate operations, enhance decision-making, and unlock insights from your data.",
             points: [
@@ -23,6 +30,7 @@ function WhatWeBuild() {
         },
         {
             title: "Custom Software Development",
+            icon: FaComputer,
             description:
                 "Scalable web and mobile applications built with clean architecture and modern tech stacks.",
             points: [
@@ -40,6 +48,7 @@ function WhatWeBuild() {
         },
         {
             title: "Website Development",
+            icon: FaGlobe,
             description:
                 "High-performance websites designed to deliver seamless experiences and support business growth.",
             points: [
@@ -57,6 +66,7 @@ function WhatWeBuild() {
         },
         {
             title: "UI/UX Design",
+            icon: FaCartShopping,
             description:
                 "User-focused designs that combine intuitive experiences with a strong and consistent visual identity.",
             points: [
@@ -95,67 +105,72 @@ function WhatWeBuild() {
 
                 </div>
 
-
                 <div className="grid w-full grid-cols-1 gap-6 pt-10 md:grid-cols-2">
 
-                    {solutions.map((item, id) => (
+                    {solutions.map((item, id) => {
 
-                        <div
-                            key={id}
-                            className="w-full rounded-2xl bg-gray-200 p-10 text-start"
-                        >
+                        const Icon = item.icon;
 
-                            <div>
+                        return (
+                            <div
+                                key={id}
+                                className="w-full rounded-2xl bg-gray-200 p-10 text-start"
+                            >
 
-                                <h1 className="text-[24px] font-baumans text-[#000000] font-bold">
-                                    {item.title}
-                                </h1>
+                                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl text-[#000099]">
+                                    <Icon size={40} />
+                                </div>
 
-                                <p className="pt-5 font-medium text-[15px] font-poppins text-[#54595F]">
-                                    {item.description}
-                                </p>
+                                <div>
+
+                                    <h1 className="text-[24px] font-baumans font-bold text-[#000000]">
+                                        {item.title}
+                                    </h1>
+
+                                    <p className="pt-5 font-medium text-[15px] font-poppins text-[#54595F]">
+                                        {item.description}
+                                    </p>
+
+                                </div>
+
+                                <div className="pt-5 font-medium font-poppins text-[15px] text-[#54595f]">
+
+                                    {item.points.map((point, index) => (
+
+                                        <div
+                                            key={index}
+                                            className="flex items-center gap-3 pt-3 first:pt-0"
+                                        >
+
+                                            <span className="h-2 w-2 rounded-full bg-[#54595f]"></span>
+
+                                            <span>
+                                                {point}
+                                            </span>
+
+                                        </div>
+
+                                    ))}
+
+                                </div>
+
+                                <ul className="flex flex-wrap gap-3 pt-5 text-[14px] font-poppins font-medium text-[#000099]">
+
+                                    {item.technologies.map((technology, index) => (
+
+                                        <li key={index}>
+                                            {technology}
+                                        </li>
+
+                                    ))}
+
+                                </ul>
 
                             </div>
-
-
-                            <div className="pt-5 font-medium font-poppins text-[15px] text-[#54595f]">
-
-                                {item.points.map((point, index) => (
-
-                                    <div
-                                        key={index}
-                                        className="flex items-center gap-3 pt-3 first:pt-0"
-                                    >
-                                        <span className="h-2 w-2 rounded-full bg-[#54595f]"></span>
-
-                                        <span>
-                                            {point}
-                                        </span>
-                                    </div>
-
-                                ))}
-
-                            </div>
-
-
-                            <ul className="flex flex-wrap gap-3 pt-5 text-[14px] font-poppins font-medium text-[#000099]">
-
-                                {item.technologies.map((technology, index) => (
-
-                                    <li key={index}>
-                                        {technology}
-                                    </li>
-
-                                ))}
-
-                            </ul>
-
-                        </div>
-
-                    ))}
+                        );
+                    })}
 
                 </div>
-
 
                 <Link
                     href="/contact"

@@ -79,7 +79,7 @@ function Footer() {
     ];
 
     return (
-        <footer className="bg-gray-100 px-6 py-16 lg:px-50">
+        <footer className="bg-gray-200 px-6 py-16 lg:px-50">
 
             <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 md:grid lg:grid-cols-4">
 

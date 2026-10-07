@@ -1,11 +1,24 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import {
+    ArrowUpRight,
+    BrainCircuit,
+    Code2,
+    Globe,
+    ShoppingCart,
+    Smartphone,
+    Palette,
+    TestTube,
+    Megaphone,
+    PenTool,
+    Video,
+} from "lucide-react";
 
 function servicesOurServices() {
 
     const solutions = [
         {
             title: "AI Solutions Built for Real Business Growth",
+            icon: BrainCircuit,
             description:
                 "We help startups and growing businesses build practical AI solutions — from intelligent chatbots and automation tools to custom ML models — designed to reduce costs, improve efficiency, and unlock new revenue opportunities.",
             points: [
@@ -23,6 +36,7 @@ function servicesOurServices() {
         },
         {
             title: "Custom Software Development",
+            icon: Code2,
             description:
                 "Custom-built software solutions tailored to your business needs. From system design to deployment, we deliver scalable, secure, and performance-driven applications.",
             points: [
@@ -40,6 +54,7 @@ function servicesOurServices() {
         },
         {
             title: "Website Design & Development",
+            icon: Globe,
             description:
                 "Custom, mobile-responsive websites designed to convert. From corporate websites to high-impact landing pages, we deliver in as fast as 7 days.",
             points: [
@@ -56,6 +71,7 @@ function servicesOurServices() {
         },
         {
             title: "E-Commerce Store Development",
+            icon: ShoppingCart,
             description:
                 "Full-featured online stores, multi-vendor marketplaces, and quick-commerce apps built to maximize sales and average order value.",
             points: [
@@ -72,6 +88,7 @@ function servicesOurServices() {
         },
         {
             title: "Mobile App Development",
+            icon: Smartphone,
             description:
                 "From idea to launch, we design and develop secure, user-centric mobile applications powered by modern tech and AI-driven insights — built for startups and growing businesses.",
             points: [
@@ -89,6 +106,7 @@ function servicesOurServices() {
         },
         {
             title: "UI/UX Design",
+            icon: Palette,
             description:
                 "We design modern, conversion-focused digital experiences using AI-powered systems—delivering fast, scalable, high-performance UI/UX for startups to enterprises.",
             points: [
@@ -107,6 +125,7 @@ function servicesOurServices() {
         },
         {
             title: "Software Testing",
+            icon: TestTube,
             description:
                 "AI-enabled testing built to ship faster, safer, and at scale. We combine automation, real-device testing, and intelligent QA systems to eliminate bugs before they reach users.",
             points: [
@@ -126,6 +145,7 @@ function servicesOurServices() {
         },
         {
             title: "Digital Marketing",
+            icon: Megaphone,
             description:
                 "AI-powered digital marketing strategies designed to attract, engage, and convert—at scale. We blend data, creativity, and automation to help startups and growing brands achieve measurable growth across every digital touchpoint.",
             points: [
@@ -144,6 +164,7 @@ function servicesOurServices() {
         },
         {
             title: "Graphic Design",
+            icon: PenTool,
             description:
                 "Designs that don’t just look good — they drive attention, trust, and action. We craft high-impact visuals using modern design systems and AI tools to help brands stand out consistently across every digital touchpoint.",
             points: [
@@ -161,6 +182,7 @@ function servicesOurServices() {
         },
         {
             title: "Video Editing",
+            icon: Video,
             description:
                 "High-impact video editing that helps your brand attract attention, drive engagement, and convert viewers into customers. We create visually compelling, platform-optimized videos that strengthen your marketing campaigns and boost brand visibility.",
             points: [
@@ -168,7 +190,6 @@ function servicesOurServices() {
                 "Social Media Videos optimized for Reels, Shorts, YouTube & Ads",
                 "Clear Audio & Music Sync to enhance message delivery",
                 "Marketing-Driven Video Editing focused on audience retention and conversions",
-               
             ],
             technologies: [
                 "Premiere Pro",
@@ -203,66 +224,71 @@ function servicesOurServices() {
 
                 </div>
 
-
                 <div className="grid w-full grid-cols-1 gap-6 pt-10 md:grid-cols-2">
 
-                    {solutions.map((item, id) => (
+                    {solutions.map((item, id) => {
 
-                        <div
-                            key={id}
-                            className="w-full rounded-2xl bg-gray-200 p-10 text-start"
-                        >
+                        const Icon = item.icon;
 
-                            <div>
+                        return (
+                            <div
+                                key={id}
+                                className="w-full rounded-2xl bg-gray-200 p-10 text-start"
+                            >
 
-                                <h1 className="text-[24px] font-baumans text-[#000000] font-bold">
-                                    {item.title}
-                                </h1>
+                                <div>
 
-                                <p className="pt-5 font-medium font-poppins text-[15px] text-[#54595F]">
-                                    {item.description}
-                                </p>
+                                    <Icon
+                                        size={35}
+                                        strokeWidth={2}
+                                        className="text-[#000099]"
+                                    />
+
+                                    <h1 className="pt-4 text-[24px] font-baumans text-[#000000] font-bold">
+                                        {item.title}
+                                    </h1>
+
+                                    <p className="pt-5 font-medium font-poppins text-[15px] text-[#54595F]">
+                                        {item.description}
+                                    </p>
+
+                                </div>
+
+                                <div className="pt-5 font-medium font-poppins text-[15px] text-[#54595f]">
+
+                                    {item.points.map((point, index) => (
+                                        <div
+                                            key={index}
+                                            className="flex items-center gap-3 pt-3 first:pt-0"
+                                        >
+
+                                            <span className="h-2 w-2 rounded-full bg-[#54595f]"></span>
+
+                                            <span>
+                                                {point}
+                                            </span>
+
+                                        </div>
+                                    ))}
+
+                                </div>
+
+                                <ul className="flex flex-wrap gap-3 pt-5 text-[14px] font-poppins font-medium text-[#000099]">
+
+                                    {item.technologies.map((technology, index) => (
+                                        <li key={index}>
+                                            {technology}
+                                        </li>
+                                    ))}
+
+                                </ul>
 
                             </div>
-
-
-                            <div className="pt-5 font-medium font-poppins text-[15px] text-[#54595f]">
-
-                                {item.points.map((point, index) => (
-
-                                    <div
-                                        key={index}
-                                        className="flex items-center gap-3 pt-3 first:pt-0"
-                                    >
-                                        <span className="h-2 w-2 rounded-full bg-[#54595f]"></span>
-
-                                        <span>
-                                            {point}
-                                        </span>
-                                    </div>
-
-                                ))}
-
-                            </div>
-
-
-                            <ul className="flex flex-wrap gap-3 pt-5 text-[14px] font-poppins font-medium text-[#000099]">
-
-                                {item.technologies.map((technology, index) => (
-
-                                    <li key={index}>
-                                        {technology}
-                                    </li>
-
-                                ))}
-
-                            </ul>
-
-                        </div>
-
-                    ))}
+                        );
+                    })}
 
                 </div>
+
             </div>
 
         </section>
