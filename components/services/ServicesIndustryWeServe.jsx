@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import{ArrowUpRight} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 function ServicesIndustryWeServe() {
 
@@ -48,15 +48,15 @@ function ServicesIndustryWeServe() {
     ];
 
     return (
-        <section className="px-6 py-40 sm:px-10 lg:px-20 xl:px-50">
+        <section className="w-full overflow-hidden px-6 py-40 sm:px-10 lg:px-4 xl:px-26 2xl:px-50">
 
             <div className="text-center">
 
-                <p className="font-baumans font-bold text-[16px] text-[#000099]">
+                <p className="font-baumans text-[16px] font-bold text-[#000099]">
                     Industries We Serve
                 </p>
 
-                <h1 className="mx-auto mt-4 max-w-[700px] font-baumans font-bold text-[40px] leading-tight text-[#000000]">
+                <h1 className="mx-auto mt-4 w-full max-w-[700px] font-baumans text-[36px] font-bold leading-tight text-[#000000] sm:text-[40px]">
                     One Unified Vision Empowering Multiple{" "}
                     <span className="text-[#000099]">
                         Industry Demands
@@ -65,16 +65,16 @@ function ServicesIndustryWeServe() {
 
             </div>
 
-            <div className="grid grid-cols-1 gap-3 pt-12 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid w-full grid-cols-1 gap-3 pt-12 sm:grid-cols-2 lg:grid-cols-4">
 
                 {sectors.map((item, id) => (
 
                     <div
                         key={id}
-                        className="flex min-h-[250px] flex-col rounded-2xl border border-[#ececec] px-5 pt-8 pb-12 hover:border-[#000099]"
+                        className="flex min-h-[250px] min-w-0 flex-col rounded-2xl border border-[#ececec] px-5 pb-12 pt-8 transition-all duration-200 hover:border-[#000099]"
                     >
 
-                        <h2 className="font-baumans font-bold text-[24px] text-[#000000]">
+                        <h2 className="font-baumans text-[22px] font-bold text-[#000000] sm:text-[24px]">
                             {item.title}
                         </h2>
 
@@ -88,21 +88,29 @@ function ServicesIndustryWeServe() {
 
             </div>
 
-             <div className="bg-[#000099] text-center rounded-2xl py-12 px-50 mt-25">
-                <h1 className="text-[40px] font-baumans font-bold text-[#ececec]">Let’s build your next digital product — faster, safer, smarter.</h1>
-                <p className="text-[#ececec] font-medium text-[15px] font-poppins pt-6">Have a great idea but not sure how to bring it to life? We’re here to help.</p>
-                      <Link
-                        href="/contact"
-                        className="group mx-auto mt-10 flex w-full max-w-[155px] items-center justify-center gap-3 rounded-full bg-[#b2ff66] px-3 py-2 text-[13px] font-poppins font-semibold text-[#000099] transition-all duration-200 hover:scale-105 hover:bg-white hover:text-[#000099]"
-                    >
-                        <span className="ps-2">
-                            Get in Touch
-                        </span>
+            <div className="mt-20 w-full rounded-2xl bg-[#000099] px-6 py-12 text-center sm:px-10 lg:mt-25 lg:px-20 xl:px-30 2xl:px-50">
 
-                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#000099] text-gray-200 transition-all duration-200 group-hover:bg-[#000099] group-hover:text-white">
-                            <ArrowUpRight size={21} />
-                        </span>
-                    </Link>
+                <h1 className="mx-auto max-w-[900px] text-[30px] font-baumans font-bold leading-tight text-[#ececec] sm:text-[36px] lg:text-[40px]">
+                    Let’s build your next digital product — faster, safer, smarter.
+                </h1>
+
+                <p className="mx-auto max-w-[650px] pt-6 text-[14px] font-medium font-poppins leading-6 text-[#ececec] sm:text-[15px]">
+                    Have a great idea but not sure how to bring it to life? We’re here to help.
+                </p>
+
+                <Link
+                    href="/contact"
+                    className="group mx-auto mt-8 flex w-full max-w-[155px] items-center justify-center gap-3 rounded-full bg-[#b2ff66] px-3 py-2 text-[13px] font-poppins font-semibold text-[#000099] transition-all duration-200 hover:scale-105 hover:bg-white hover:text-[#000099] sm:mt-10"
+                >
+                    <span className="ps-2">
+                        Get in Touch
+                    </span>
+
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#000099] text-gray-200 transition-all duration-200 group-hover:bg-[#000099] group-hover:text-white">
+                        <ArrowUpRight size={21} />
+                    </span>
+                </Link>
+
             </div>
 
         </section>

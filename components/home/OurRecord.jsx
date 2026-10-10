@@ -1,27 +1,101 @@
-import Link from "next/link"
+"use client";
+
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+
+function CountNumber({ target }) {
+    const [count, setCount] = useState(0);
+    const sectionRef = useRef(null);
+    const startedRef = useRef(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !startedRef.current) {
+                    startedRef.current = true;
+
+                    const duration = 1500;
+                    const startTime = performance.now();
+
+                    const updateCount = (currentTime) => {
+                        const progress = Math.min(
+                            (currentTime - startTime) / duration,
+                            1
+                        );
+
+                        setCount(Math.floor(progress * target));
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            setCount(target);
+                        }
+                    };
+
+                    requestAnimationFrame(updateCount);
+                }
+            },
+            {
+                threshold: 0.3,
+            }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, [target]);
+
+    return (
+        <div ref={sectionRef}>
+            <h2 className="font-baumans text-[40px] font-bold leading-none text-white sm:text-[45px]">
+                {count}+
+            </h2>
+        </div>
+    );
+}
 
 function OurRecord() {
     return (
-        <section className="px-50">
-            <div className="text-center bg-[#000099] p-10 rounded-3xl">
-                <h1 className="text-[32px] font-baumans font-bold text-[#ffffff]">Trusted by growing businesses</h1>
-                <div className="flex justify-center gap-25 pt-20 pb-5 text-gray-100">
-                    <div>
-                        <h1 className="text-[45px] font-baumans text-[#ffffff] font-bold">40+</h1>
-                        <p className="text-[20px] font-poppins text-[#ffffff] font-medium">Projects Delievered</p>
+        <section className="px-6 py-10 sm:px-10 lg:px-14 xl:px-26">
+            <div className="rounded-[22px] bg-gradient-to-b from-[#08089b] via-[#05056b] to-[#000000] px-6 py-14 sm:px-10 sm:py-16 lg:px-12 lg:py-16">
+                <h1 className="text-center font-baumans text-[28px] font-bold text-white sm:text-[32px] lg:text-[34px]">
+                    Trusted by growing businesses
+                </h1>
+
+                <div className="grid grid-cols-1 gap-y-10 pt-12 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-4 lg:gap-0 lg:pt-16">
+                    <div className="text-center">
+                        <CountNumber target={40} />
+
+                        <p className="mt-4 font-poppins text-[16px] font-medium text-white sm:text-[19px]">
+                            Project Delivered
+                        </p>
                     </div>
-                    <div>
-                        <h1 className="text-[45px] font-baumans text-[#ffffff] font-bold">34+</h1>
-                        <p className="text-[20px] font-poppins text-[#ffffff] font-medium">Happy Clients</p>
+
+                    <div className="text-center">
+                        <CountNumber target={34} />
+
+                        <p className="mt-4 font-poppins text-[16px] font-medium text-white sm:text-[19px]">
+                            Happy Clients
+                        </p>
                     </div>
-                    <div>
-                        <h1 className="text-[45px] font-baumans text-[#ffffff] font-bold">9+</h1>
-                        <p className="text-[20px] font-poppins text-[#ffffff] font-medium">Years Experience</p>
+
+                    <div className="text-center">
+                        <CountNumber target={9} />
+
+                        <p className="mt-4 font-poppins text-[16px] font-medium text-white sm:text-[19px]">
+                            Years Experience
+                        </p>
                     </div>
-                    <div>
-                        <h1 className="text-[45px] font-baumans text-[#ffffff] font-bold">14+</h1>
-                        <p className="text-[20px] font-poppins text-[#ffffff] font-medium">Team Members</p>
+
+                    <div className="text-center">
+                        <CountNumber target={14} />
+
+                        <p className="mt-4 font-poppins text-[16px] font-medium text-white sm:text-[19px]">
+                            Team Members
+                        </p>
                     </div>
                 </div>
             </div>
@@ -38,8 +112,8 @@ function OurRecord() {
                     <ArrowUpRight size={21} />
                 </span>
             </Link>
-        </section >
-    )
+        </section>
+    );
 }
 
 export default OurRecord;

@@ -90,7 +90,7 @@ function IndustriesWhatWeBuild() {
     ];
 
     return (
-        <section className="px-6 pb-20 pt-40 lg:px-20 xl:px-50">
+        <section className="w-full overflow-hidden px-6 pb-20 pt-40 sm:px-10 lg:px-4 xl:px-26 2xl:px-50">
 
             <div className="text-center">
 
@@ -98,7 +98,7 @@ function IndustriesWhatWeBuild() {
                     Build for Every Sector
                 </p>
 
-                <h1 className="mx-auto mt-4 max-w-[700px] text-[40px] font-baumans text-[#000000] font-bold leading-tight">
+                <h1 className="mx-auto mt-4 w-full max-w-[700px] text-[36px] font-baumans font-bold leading-tight text-[#000000] sm:text-[40px]">
                     Proven across{" "}
                     <span className="text-[#000099]">
                         industries.
@@ -111,7 +111,7 @@ function IndustriesWhatWeBuild() {
 
             </div>
 
-            <div className="mx-auto mt-16 grid max-w-[1200px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mx-auto mt-16 grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 
                 {sectors.map((sector, index) => {
 
@@ -120,11 +120,11 @@ function IndustriesWhatWeBuild() {
                     return (
                         <div
                             key={index}
-                            className="flex min-h-[280px] flex-col items-center justify-center border border-gray-200 p-8 text-center transition-all duration-300 hover:bg-[#d0eaf8]"
+                            className="flex min-h-[280px] min-w-0 flex-col items-center justify-center border border-gray-200 p-6 text-center transition-all duration-300 hover:bg-[#d0eaf8] sm:p-8"
                         >
 
                             <div
-                                className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl"
+                                className="mb-5 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
                                 style={{
                                     backgroundColor: sector.iconBg,
                                 }}
@@ -152,19 +152,19 @@ function IndustriesWhatWeBuild() {
 
             </div>
 
-            <div className="bg-[#000099] text-center rounded-2xl py-12 px-50 mt-25">
+            <div className="mt-20 w-full rounded-2xl bg-[#000099] px-6 py-12 text-center sm:px-10 lg:mt-25 lg:px-20 xl:px-30 2xl:px-50">
 
-                <h1 className="text-[40px] font-baumans font-bold text-[#ececec]">
+                <h1 className="mx-auto max-w-[900px] text-[30px] font-baumans font-bold leading-tight text-[#ececec] sm:text-[36px] lg:text-[40px]">
                     Let’s build your next digital product — faster, safer, smarter.
                 </h1>
 
-                <p className="text-[#ececec] font-medium text-[15px] font-poppins pt-6">
+                <p className="mx-auto max-w-[650px] pt-6 text-[14px] font-medium font-poppins leading-6 text-[#ececec] sm:text-[15px]">
                     Have a great idea but not sure how to bring it to life? We’re here to help.
                 </p>
 
                 <Link
                     href="/contact"
-                    className="group mx-auto mt-10 flex w-full max-w-[155px] items-center justify-center gap-3 rounded-full bg-[#b2ff66] px-3 py-2 text-[13px] font-poppins font-semibold text-[#000099] transition-all duration-200 hover:scale-105 hover:bg-white hover:text-[#000099]"
+                    className="group mx-auto mt-8 flex w-full max-w-[155px] items-center justify-center gap-3 rounded-full bg-[#b2ff66] px-3 py-2 text-[13px] font-poppins font-semibold text-[#000099] transition-all duration-200 hover:scale-105 hover:bg-white hover:text-[#000099] sm:mt-10"
                 >
 
                     <span className="ps-2">

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
     Layers3,
     Clock3,
@@ -49,15 +48,15 @@ function AboutUsVirexaApproach() {
     ];
 
     return (
-        <section className="mt-20">
+        <section className="w-full overflow-hidden px-6 py-20 sm:px-10 lg:px-4 xl:px-26 2xl:px-50">
 
             <div className="text-center">
 
-                <p className="font-baumans font-bold text-[16px] text-[#000099]">
+                <p className="font-baumans text-[16px] font-bold text-[#000099]">
                     Virexa Approach
                 </p>
 
-                <h1 className="mx-auto mt-4 max-w-[700px] font-baumans font-bold text-[40px] leading-tight text-[#000000]">
+                <h1 className="mx-auto mt-4 w-full max-w-[700px] font-baumans text-[36px] font-bold leading-tight text-[#000000] sm:text-[40px]">
                     More reasons{" "}
                     <span className="text-[#000099]">
                         clients
@@ -65,16 +64,16 @@ function AboutUsVirexaApproach() {
                     choose Virexa
                 </h1>
 
-                <p className="font-poppins font-medium text-[15px] text-[#54595f] mx-auto max-w-[620px] pt-5">
+                <p className="mx-auto w-full max-w-[620px] pt-5 font-poppins text-[14px] font-medium leading-6 text-[#54595f] sm:text-[15px]">
                     We specialize in delivering full-cycle software solutions and AI-driven marketing
                     tools designed to accelerate digital transformation.
                 </p>
 
             </div>
 
-            <div className="px-6 py-15 sm:px-10 lg:px-20 xl:px-30 bg-[#000099] mt-30 mb-15">
+            <div className="mt-20 mb-15 w-full rounded-2xl bg-[#000099] py-10 sm:py-12 lg:mt-30">
 
-                <div className="grid grid-cols-1 gap-3 pt-12 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid w-full grid-cols-1 gap-3 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-6">
 
                     {sectors.map((item, id) => {
 
@@ -83,18 +82,20 @@ function AboutUsVirexaApproach() {
                         return (
                             <div
                                 key={id}
-                                className="flex min-h-[250px] flex-col rounded-2xl bg-[#000095] px-5 pt-8 pb-12 hover:border hover:border-[#54595f]"
+                                className="flex min-h-[250px] min-w-0 flex-col rounded-2xl bg-[#000095] px-5 pb-12 pt-8 transition-all duration-200 hover:border hover:border-[#54595f]"
                             >
 
-                                <div className="mb-8 flex h-11 w-11 items-center justify-center rounded-xl bg-[#2525A8]">
+                                <div className="mb-8 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#2525A8]">
+
                                     <Icon
                                         size={21}
                                         strokeWidth={1.7}
                                         className="text-white"
                                     />
+
                                 </div>
 
-                                <h2 className="font-baumans font-bold text-[20px] text-[#FFFFFF]">
+                                <h2 className="font-baumans text-[20px] font-bold text-[#FFFFFF]">
                                     {item.title}
                                 </h2>
 

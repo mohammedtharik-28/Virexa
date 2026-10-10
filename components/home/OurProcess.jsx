@@ -49,6 +49,8 @@ function OurProcess() {
 
     const [processOpen, setProcessOpen] = useState(0);
 
+    const activeProcess = process[processOpen];
+
     return (
         <section className="pt-20">
 
@@ -69,7 +71,7 @@ function OurProcess() {
                     </span>
                 </h1>
 
-                <div className="relative mx-50 mt-20 flex justify-between border-b-2 border-b-gray-300">
+                <div className="mx-auto mt-20 grid w-full xl:max-w-[1144px] 2xl:max-w-[1200px] grid-cols-2 border-b-2 border-gray-300 lg:grid-cols-4">
 
                     {process.map((items, id) => (
 
@@ -79,8 +81,7 @@ function OurProcess() {
                             className={`
                                 cursor-pointer
                                 border-b-3
-                                pb-8
-                                px-10
+                                px-5 py-6
                                 transition-all
                                 duration-300
                                 ${
@@ -105,72 +106,63 @@ function OurProcess() {
 
                 </div>
 
-                <div className="w-full px-60 py-15 text-start">
+                <div className="mx-auto w-full px-6 py-15 text-start sm:px-10 lg:px-4 xl:px-30 2xl:px-50">
 
-                    {process.map((item, id) => (
+                    <div className="flex flex-col items-center justify-between gap-10 lg:flex-row">
 
-                        processOpen === id && (
+                        <div className="w-full max-w-[500px]">
 
-                            <div
-                                key={id}
-                                className="flex items-center justify-between gap-8"
-                            >
+                            <h1 className="text-[16px] font-baumans font-bold text-[#000099]">
+                                ({activeProcess.stepNo})
+                            </h1>
 
-                                <div className="max-w-[500px]">
+                            <h1 className="pt-3 text-[24px] font-baumans font-bold text-[#000000]">
+                                {activeProcess.name}
+                            </h1>
 
-                                    <h1 className="text-[16px] font-baumans font-bold text-[#000099]">
-                                        ({item.stepNo})
-                                    </h1>
+                            <p className="pt-5 font-medium font-poppins text-[15px] text-[#54595F]">
+                                {activeProcess.flow}
+                            </p>
 
-                                    <h1 className="pt-3 text-[24px] font-baumans text-[#000000] font-bold">
-                                        {item.name}
-                                    </h1>
+                            <hr className="mt-3 text-gray-200" />
 
-                                    <p className="pt-5 font-medium font-poppins text-[15px] text-[#54595F]">
-                                        {item.flow}
-                                    </p>
+                            <div className="pt-2 font-medium font-poppins text-[15px] text-[#54595F]">
 
-                                    <hr className="mt-3 text-gray-200" />
-
-                                    <div className="pt-2 font-medium font-poppins text-[15px] text-[#54595F]">
-
-                                        <div className="flex items-center gap-3">
-                                            <span className="h-1 w-1 rounded-full bg-[#54595F]"></span>
-                                            <span>{item.point1}</span>
-                                        </div>
-
-                                        <div className="flex items-center gap-3 pt-1">
-                                            <span className="h-1 w-1 rounded-full bg-[#54595F]"></span>
-                                            <span>{item.point2}</span>
-                                        </div>
-
-                                        <div className="flex items-center gap-3 pt-1">
-                                            <span className="h-1 w-1 rounded-full bg-[#54595F]"></span>
-                                            <span>{item.point3}</span>
-                                        </div>
-
-                                        <div className="flex items-center gap-3 pt-1">
-                                            <span className="h-1 w-1 rounded-full bg-[#54595F]"></span>
-                                            <span>{item.point4}</span>
-                                        </div>
-
-                                    </div>
-
+                                <div className="flex items-center gap-3">
+                                    <span className="h-1 w-1 rounded-full bg-[#54595F]"></span>
+                                    <span>{activeProcess.point1}</span>
                                 </div>
 
-                                <div>
-                                    <img
-                                        src={item.img}
-                                        alt={item.name}
-                                        className="w-130 rounded-2xl"
-                                    />
+                                <div className="flex items-center gap-3 pt-1">
+                                    <span className="h-1 w-1 rounded-full bg-[#54595F]"></span>
+                                    <span>{activeProcess.point2}</span>
+                                </div>
+
+                                <div className="flex items-center gap-3 pt-1">
+                                    <span className="h-1 w-1 rounded-full bg-[#54595F]"></span>
+                                    <span>{activeProcess.point3}</span>
+                                </div>
+
+                                <div className="flex items-center gap-3 pt-1">
+                                    <span className="h-1 w-1 rounded-full bg-[#54595F]"></span>
+                                    <span>{activeProcess.point4}</span>
                                 </div>
 
                             </div>
 
-                        )
+                        </div>
 
-                    ))}
+                        <div className="w-full lg:w-auto">
+
+                            <img
+                                src={activeProcess.img}
+                                alt={activeProcess.name}
+                                className="w-full max-w-[520px] rounded-2xl"
+                            />
+
+                        </div>
+
+                    </div>
 
                 </div>
 

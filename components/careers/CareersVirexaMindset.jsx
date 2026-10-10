@@ -51,9 +51,9 @@ function CareersVirexaMindset() {
     ];
 
     return (
-        <section className="px-30 relative z-10 bg-white">
+        <section className="relative z-10 w-full overflow-hidden bg-white px-6 sm:px-10 lg:px-4 xl:px-26 2xl:px-50">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pt-20">
+            <div className="grid w-full grid-cols-1 gap-5 pt-20 sm:grid-cols-2 lg:grid-cols-3">
 
                 {mindset.map((item, index) => {
 
@@ -62,11 +62,11 @@ function CareersVirexaMindset() {
                     return (
                         <div
                             key={index}
-                            className="max-w-[360px] mx-auto border border-[#ececec] rounded-2xl p-8 transition-all hover:scale-110 duration-200"
+                            className="mx-auto flex w-full max-w-[360px] min-w-0 flex-col rounded-2xl border border-[#ececec] p-6 transition-all duration-200 hover:scale-105 sm:p-8"
                         >
 
                             <Icon
-                                className="text-[#000099] mb-8"
+                                className="mb-8 text-[#000099]"
                                 size={40}
                             />
 
@@ -74,7 +74,7 @@ function CareersVirexaMindset() {
                                 {item.title}
                             </h1>
 
-                            <p className="font-medium text-[15px] font-poppins text-[#54595F] pt-5">
+                            <p className="pt-5 text-[14px] font-medium font-poppins leading-6 text-[#54595F] sm:text-[15px]">
                                 {item.description}
                             </p>
 
@@ -84,17 +84,17 @@ function CareersVirexaMindset() {
 
             </div>
 
-            <div className="bg-[#000099] text-center rounded-2xl py-15 px-80 mt-25 mb-25">
+            <div className="mt-20 mb-20 w-full rounded-2xl bg-[#000099] px-6 py-10 text-center sm:px-10 sm:py-12 lg:mt-25 lg:mb-25 lg:px-20 xl:px-30 2xl:px-50">
 
                 <p className="font-bold text-[16px] font-baumans text-[#ececec] lg:text-base">
                     Employee first, Employee always
                 </p>
 
-                <h1 className="text-[40px] font-baumans font-bold text-[#ececec]">
+                <h1 className="mt-2 text-[32px] font-baumans font-bold text-[#ececec] sm:text-[36px] lg:text-[40px]">
                     Register Your Profile
                 </h1>
 
-                <p className="text-[#ececec] font-medium text-[15px] font-poppins pt-5">
+                <p className="mx-auto max-w-[700px] pt-5 text-[14px] font-medium font-poppins leading-6 text-[#ececec] sm:text-[15px]">
                     Register your profile on{" "}
                     <span className="border-b-3 border-[#b2ff66]">
                         hr@virexa.in

@@ -80,7 +80,7 @@ function IndustriesWeServe() {
     ];
 
     return (
-        <section className="px-6 pt-40 py-10 sm:px-10 lg:px-20 xl:px-50">
+        <section className="w-full overflow-hidden px-6 py-40 sm:px-10 lg:px-4 xl:px-26 2xl:px-50">
 
             <div className="text-center">
 
@@ -88,7 +88,7 @@ function IndustriesWeServe() {
                     Industries We Serve
                 </p>
 
-                <h1 className="mx-auto mt-4 max-w-[750px] font-bold font-baumans text-[40px] leading-tight text-[#000000]">
+                <h1 className="mx-auto mt-4 w-full max-w-[750px] font-bold font-baumans text-[36px] leading-tight text-[#000000] sm:text-[40px]">
                     Smart{" "}
                     <span className="text-[#000099]">
                         technology solutions
@@ -98,22 +98,22 @@ function IndustriesWeServe() {
 
             </div>
 
-            <div className="mt-20 grid grid-flow-row grid-cols-2 gap-12">
+            <div className="mt-20 grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:gap-12">
 
                 {sectors.map((item, id) => (
 
                     <div
                         key={id}
-                        className="flex gap-12 border-t rounded-2xl border-b border-[#cecece] py-8 "
+                        className="flex w-full min-w-0 gap-5 rounded-2xl border-b border-t border-[#cecece] py-8 sm:gap-8 lg:gap-12"
                     >
 
-                        <div className="w-12 shrink-0">
-                            <h2 className="font-poppins text-[40px] font-medium text-[#69727d]">
+                        <div className="w-10 shrink-0 sm:w-12">
+                            <h2 className="font-poppins text-[32px] font-medium text-[#69727d] sm:text-[40px]">
                                 {String(id + 1).padStart(2, "0")}
                             </h2>
                         </div>
 
-                        <div className="max-w-[420px]">
+                        <div className="min-w-0 w-full max-w-[420px]">
 
                             <h2 className="font-baumans font-bold text-[18px] text-[#000000]">
                                 {item.title}
@@ -129,7 +129,7 @@ function IndustriesWeServe() {
 
                                     <li
                                         key={index}
-                                        className="font-poppins text-[14px] font-medium text-[#000099] after:ml-4 after:text-[#cecece]  after:content-['|'] last:after:content-none"
+                                        className="font-poppins text-[14px] font-medium text-[#000099] after:ml-4 after:text-[#cecece] after:content-['|'] last:after:content-none"
                                     >
                                         {point}
                                     </li>

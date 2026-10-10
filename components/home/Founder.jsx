@@ -39,17 +39,17 @@ function Founder() {
     ];
 
     return (
-        <section className="max-w-full px-12 py-10 text-center">
+        <section className="max-w-full px-6 py-10 text-center sm:px-10 lg:px-12">
 
-            <div className="px-20">
+            <div className="px-0 sm:px-10 lg:px-10 xl:px-10">
 
-                <div className="pb-12 text-[20px] font-baumans font-bold text-[#000000]">
+                <div className="pb-10 text-[20px] font-baumans font-bold text-[#000000] sm:pb-12">
                     <h1>
                         Trusted by Founders and Growing Teams
                     </h1>
                 </div>
 
-                <div className="flex items-center justify-evenly gap-y-10">
+                <div className="grid grid-cols-2 items-center justify-items-center gap-x-4 gap-y-10 sm:gap-x-8 lg:grid-cols-7 lg:gap-x-0 lg:gap-y-10">
 
                     {companies.map((company, id) => (
 

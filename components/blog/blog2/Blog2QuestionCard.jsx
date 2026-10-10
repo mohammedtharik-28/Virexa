@@ -1,10 +1,8 @@
 "use client";
 
-
 import { useState } from "react";
 
 function Blog2QuestionCard() {
-
     const [answerOpen, setAnswerOpen] = useState(0);
 
     const QuestionAndAnswers = [
@@ -31,13 +29,16 @@ function Blog2QuestionCard() {
     ];
 
     return (
-        <section className="px-70 py-25">
+        <section className="w-full overflow-hidden px-6 py-20 sm:px-10 lg:px-4 xl:px-26 2xl:px-50">
 
             <div className="text-center">
-                <h1 className="text-[36px] font-baumans text-[#000000] font-bold">Frequently asked{" "}<span className="text-[#000099]">questions</span></h1>
+                <h1 className="mx-auto max-w-[700px] text-[32px] font-baumans font-bold text-[#000000] sm:text-[36px]">
+                    Frequently asked{" "}
+                    <span className="text-[#000099]">questions</span>
+                </h1>
             </div>
 
-            <div className="mx-auto max-w-[1200px] mt-10">
+            <div className="mx-auto mt-10 w-full max-w-[1200px]">
 
                 {QuestionAndAnswers.map((items, id) => (
 
@@ -45,29 +46,29 @@ function Blog2QuestionCard() {
                         key={id}
                         className="border-b border-gray-200"
                     >
+
                         <button
                             onClick={() =>
                                 setAnswerOpen(
                                     answerOpen === id ? null : id
                                 )
                             }
-                            className="flex w-full items-center justify-between py-6 text-left cursor-pointer"
+                            className="flex w-full min-w-0 cursor-pointer items-center justify-between gap-4 py-5 text-left sm:py-6"
                         >
 
-                            <p className="font-bold text-[20px] font-baumans text-[#000000]">
+                            <p className="min-w-0 text-[17px] font-bold font-baumans text-[#000000] sm:text-[20px]">
                                 {items.question}
                             </p>
 
-                            <span className="text-3xl font-bold">
+                            <span className="shrink-0 text-2xl font-bold sm:text-3xl">
                                 {answerOpen === id ? "^" : "+"}
                             </span>
 
                         </button>
 
-                        
                         {answerOpen === id && (
-                            <div className="pb-6 pr-10 border-t border-gray-200 pt-5">
-                                <p className="text-[15px] font-poppins font-normal leading-6 text-[#54595f]">
+                            <div className="border-t border-gray-200 pb-5 pt-4 sm:pb-6 sm:pt-5">
+                                <p className="text-[14px] font-poppins font-normal leading-6 text-[#54595f] sm:text-[15px]">
                                     {items.answer}
                                 </p>
                             </div>

@@ -85,7 +85,7 @@ function WhatWeBuild() {
     ];
 
     return (
-        <section className="bg-gray-100 px-8 pb-20 pt-[170px] sm:pt-[140px] lg:px-20 lg:pt-[100px] xl:px-50">
+        <section className="bg-gray-100 px-8 pb-20 pt-[170px] sm:pt-[140px] lg:px-20 lg:pt-[100px] xl:px-26">
 
             <div className="flex flex-col items-center text-center">
 

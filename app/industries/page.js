@@ -1,11 +1,11 @@
 import Footer from "@/components/home/Footer";
 import Founder from "@/components/home/Founder";
 import Navbar from "@/components/home/Navbar";
+import OurTechnology from "@/components/home/OurTechnology";
 import IndustriesHero from "@/components/industries/IndustriesHero";
 import IndustriesOurProcess from "@/components/industries/IndustriesOurProcess";
 import IndustriesWeServe from "@/components/industries/IndustriesWeServe";
 import IndustriesWhatWeBuild from "@/components/industries/IndustriesWhatWeBuild";
-import ServicesOurTechnology from "@/components/services/ServicesOurTechnology";
 
 
 export default function services(){
@@ -16,7 +16,7 @@ export default function services(){
         <Founder/>
         <IndustriesWeServe/>
         <IndustriesOurProcess/>
-        <ServicesOurTechnology/>
+        <OurTechnology/>
         <IndustriesWhatWeBuild/>
         <Footer/>
         </>

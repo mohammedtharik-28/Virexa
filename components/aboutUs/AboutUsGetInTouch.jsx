@@ -1,161 +1,398 @@
-import { Phone, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
+"use client";
 
+import { Phone, ArrowUpRight, ChevronDown } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import {
+    getCountries,
+    getCountryCallingCode,
+} from "react-phone-number-input";
+import en from "react-phone-number-input/locale/en";
+import flags from "react-phone-number-input/flags";
+import { getExampleNumber } from "libphonenumber-js";
+import examples from "libphonenumber-js/mobile/examples";
 
 function AboutUsGetInTouch() {
-	return (
-		<section className="pb-20">
-			<div className="mt-30 px-6 sm:px-10 md:px-58">
-				<div className="mx-auto text-center">
-					<h1 className="mx-auto mt-4 w-full max-w-[700px] text-[40px] font-baumans font-bold leading-tight text-[#000000]">
-						Get in{" "}
-						<span className="text-[#000099]">
-							Touch
-						</span>{" "}
-						with Us
-					</h1>
-				</div>
+    const [country, setCountry] = useState("US");
+    const [countryOpen, setCountryOpen] = useState(false);
+    const [phone, setPhone] = useState("");
+    const [menuDirection, setMenuDirection] = useState("down");
+    const [menuHeight, setMenuHeight] = useState(240);
 
-				<div className="mx-auto mt-20 max-w-[1200px] border-none rounded-2xl shadow-xl px-8 py-6">
+    const countryDropdownRef = useRef(null);
+    const countryButtonRef = useRef(null);
+    const countryListRef = useRef(null);
+    const scrollPositionRef = useRef(0);
 
-					<div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+    const countries = getCountries().sort((a, b) =>
+        en[a].localeCompare(en[b])
+    );
 
-						<h1 className="font-baumans font-semibold text-[20px] text-[#000000]">
-							Send a Message
-						</h1>
+    const SelectedFlag = flags[country];
 
-						<div>
-							<h1 className="font-baumans font-semibold text-[15px] text-[#000000]">
-								or Call for Consultation
-							</h1>
+    const exampleNumber = getExampleNumber(country, examples);
 
-							<Link
-								href="/phone"
-								className="mt-3 flex items-center gap-2"
-							>
-								<Phone
-									size={25}
-									className="text-[#000099]"
-								/>
+    const phonePlaceholder = exampleNumber
+        ? exampleNumber.formatNational()
+        : "Enter phone number";
 
-								<span className="font-semibold font-baumans text-[15px] text-[#000000]">
-									+91 892-582-6080
-								</span>
-							</Link>
-						</div>
+    const updateMenuPosition = () => {
+        if (!countryButtonRef.current) return;
 
-					</div>
+        const rect = countryButtonRef.current.getBoundingClientRect();
 
-					<div className="mt-12 flex flex-col gap-10 lg:flex-row  justify-between ">
+        const gap = 8;
+        const maxHeight = 240;
 
-						<div className="w-full max-w-[260px]">
+        const spaceAbove = rect.top - gap;
+        const spaceBelow = window.innerHeight - rect.bottom - gap;
 
-							<div className="mb-8">
-								<div className="flex">
-									<h1 className="font-poppins text-[15px] font-medium text-[#000000]">
-										Name
-									</h1>
+        if (spaceBelow >= maxHeight) {
+            setMenuDirection("down");
+            setMenuHeight(maxHeight);
+        } else if (spaceAbove >= maxHeight) {
+            setMenuDirection("up");
+            setMenuHeight(maxHeight);
+        } else if (spaceBelow >= spaceAbove) {
+            setMenuDirection("down");
+            setMenuHeight(Math.max(120, spaceBelow));
+        } else {
+            setMenuDirection("up");
+            setMenuHeight(Math.max(120, spaceAbove));
+        }
+    };
 
-									<p className="text-red-500">
-										*
-									</p>
-								</div>
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                countryDropdownRef.current &&
+                !countryDropdownRef.current.contains(event.target)
+            ) {
+                if (countryListRef.current) {
+                    scrollPositionRef.current =
+                        countryListRef.current.scrollTop;
+                }
 
-								<input
-									type="text"
-									className="mt-2 w-full border-b-2 border-[#54595f] bg-transparent py-1 outline-none"
-								/>
-							</div>
+                setCountryOpen(false);
+            }
+        };
 
-							<div className="mb-8">
-								<div className="flex">
-									<h1 className="font-poppins text-[15px] font-medium text-[#000000]">
-										Email
-									</h1>
+        document.addEventListener("mousedown", handleClickOutside);
 
-									<p className="text-red-500">
-										*
-									</p>
-								</div>
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
-								<input
-									type="email"
-									className="mt-2 w-full border-b-2 border-[#54595f] bg-transparent py-1 outline-none"
-								/>
-							</div>
+    useEffect(() => {
+        if (!countryOpen) return;
 
-							<div className="mb-8">
-								<div className="flex">
-									<h1 className="font-poppins text-[15px] font-medium text-[#000000]">
-										Phone
-									</h1>
+        updateMenuPosition();
 
-									<p className="text-red-500">
-										*
-									</p>
-								</div>
+        window.addEventListener("resize", updateMenuPosition);
+        window.addEventListener("scroll", updateMenuPosition, true);
 
-								<input
-									type="tel"
-									className="mt-2 w-full border-b-2 border-[#54595f] bg-transparent py-1 outline-none"
-								/>
-							</div>
+        return () => {
+            window.removeEventListener("resize", updateMenuPosition);
+            window.removeEventListener(
+                "scroll",
+                updateMenuPosition,
+                true
+            );
+        };
+    }, [countryOpen]);
 
-							<button
-								type="submit"
-								className="min-w-[200px] rounded-full bg-[#000099] px-8 py-3 font-poppins text-[14px] font-semibold text-white transition-all duration-300 hover:bg-[#b2ff66] hover:text-[#000099]"
-							>
-								Submit
-							</button>
+    useEffect(() => {
+        if (countryOpen && countryListRef.current) {
+            requestAnimationFrame(() => {
+                countryListRef.current.scrollTop =
+                    scrollPositionRef.current;
+            });
+        }
+    }, [countryOpen]);
 
-						</div>
+    const handleCountryMenu = () => {
+        if (countryOpen) {
+            if (countryListRef.current) {
+                scrollPositionRef.current =
+                    countryListRef.current.scrollTop;
+            }
 
-						<div className="w-full max-w-[480px]">
+            setCountryOpen(false);
+        } else {
+            updateMenuPosition();
+            setCountryOpen(true);
+        }
+    };
 
-							<div className="mb-8">
-								<div className="flex">
-									<h1 className="font-poppins text-[15px] font-medium text-[#000000]">
-										Message
-									</h1>
+    const handleCountrySelect = (countryCode) => {
+        if (countryListRef.current) {
+            scrollPositionRef.current =
+                countryListRef.current.scrollTop;
+        }
 
-									<p className="text-red-500">
-										*
-									</p>
-								</div>
+        setCountry(countryCode);
+        setPhone("");
+        setCountryOpen(false);
+    };
 
-								<textarea
-									className="mt-2 min-h-[130px] w-full resize-none border-b-2 border-[#54595f] bg-transparent py-1 outline-none"
-									placeholder="Let's create something amazing together-send us your project details, and we'll get back to you within 24 hours."
-								/>
+    return (
+        <section className="w-full overflow-hidden pb-20">
+            <div className="mt-30 w-full px-6 sm:px-10 lg:px-4 xl:px-60 2xl:px-70">
+                <div className="mx-auto text-center">
+                    <h1 className="mx-auto mt-4 w-full max-w-[700px] text-[36px] font-baumans font-bold leading-tight text-[#000000] sm:text-[40px]">
+                        Get in{" "}
+                        <span className="text-[#000099]">
+                            Touch
+                        </span>{" "}
+                        with Us
+                    </h1>
+                </div>
 
-							</div>
+                <div className="mx-auto mt-16 w-full rounded-2xl border-none px-5 py-6 shadow-xl sm:mt-20 sm:px-8">
+                    <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+                        <h1 className="font-baumans text-[20px] font-semibold text-[#000000]">
+                            Send a Message
+                        </h1>
 
-						</div>
+                        <div>
+                            <h1 className="font-baumans text-[15px] font-semibold text-[#000000]">
+                                or Call for Consultation
+                            </h1>
 
-					</div>
+                            <Link
+                                href="/phone"
+                                className="mt-3 flex items-center gap-2"
+                            >
+                                <Phone
+                                    size={25}
+                                    className="text-[#000099]"
+                                />
 
-				</div>
-			</div>
-			<div className="bg-[#000099] text-center rounded-3xl py-18 px-28 mt-25 mx-26">
-				<h1 className="font-baumans font-bold text-[16px] text-[#ffffff]">Get Started Today</h1>
-				<h1 className="text-[40px] font-baumans font-bold text-[#ececec]">Ready to Grow Your Business Online in Coimbatore?</h1>
-				<p className="text-[#ececec] font-medium text-[15px] font-poppins pt-2 px-12">Talk to our web development experts for a FREE consultation — no strings attached. We'll help you plan the perfect website for your business.</p>
-				<Link
-					href="/contact"
-					className="group mx-auto mt-10 flex w-full max-w-[220px] items-center justify-center gap-3 rounded-full bg-[#b2ff66] px-3 py-2 text-[13px] font-poppins font-semibold text-[#000099] transition-all duration-200 hover:scale-105 hover:bg-white hover:text-[#000099]"
-				>
-					<span className="ps-2">
-						Get Free Consultation
-					</span>
+                                <span className="font-baumans text-[15px] font-semibold text-[#000000]">
+                                    +91 892-582-6080
+                                </span>
+                            </Link>
+                        </div>
+                    </div>
 
-					<span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#000099] text-gray-200 transition-all duration-200 group-hover:bg-[#000099] group-hover:text-white">
-						<ArrowUpRight size={21} />
-					</span>
-				</Link>
-			</div>
+                    <div className="mt-10 flex w-full flex-col gap-10 sm:mt-12 lg:flex-row lg:justify-between">
+                        <div className="w-full lg:max-w-[260px]">
+                            <div className="mb-8">
+                                <div className="flex">
+                                    <h1 className="font-poppins text-[15px] font-medium text-[#000000]">
+                                        Name
+                                    </h1>
 
-		</section>
-	);
+                                    <p className="text-red-500">*</p>
+                                </div>
+
+                                <input
+                                    type="text"
+                                    className="mt-2 w-full border-b-2 border-[#c9c9c9] bg-transparent py-1 outline-none"
+                                />
+                            </div>
+
+                            <div className="mb-8">
+                                <div className="flex">
+                                    <h1 className="font-poppins text-[15px] font-medium text-[#000000]">
+                                        Email
+                                    </h1>
+
+                                    <p className="text-red-500">*</p>
+                                </div>
+
+                                <input
+                                    type="email"
+                                    className="mt-2 w-full border-b-2 border-[#c9c9c9] bg-transparent py-1 outline-none"
+                                />
+                            </div>
+
+                            <div
+                                ref={countryDropdownRef}
+                                className="relative mb-8"
+                            >
+                                <div className="flex">
+                                    <h1 className="font-poppins text-[15px] font-medium text-[#000000]">
+                                        Phone
+                                    </h1>
+
+                                    <p className="text-red-500">*</p>
+                                </div>
+
+                                <div className="mt-2 flex items-center border-b-2 border-[#c9c9c9] bg-transparent py-1">
+                                    <button
+                                        ref={countryButtonRef}
+                                        type="button"
+                                        onClick={handleCountryMenu}
+                                        className="flex shrink-0 cursor-pointer items-center gap-1 pl-1 pr-2"
+                                    >
+                                        <span className="flex h-4.5 w-5.5 items-center justify-center overflow-hidden">
+                                            {SelectedFlag && (
+                                                <SelectedFlag
+                                                    title={en[country]}
+                                                    className="h-full w-full"
+                                                />
+                                            )}
+                                        </span>
+
+                                        <span className="text-[#777777]">
+                                            <ChevronDown size={15} />
+                                        </span>
+                                    </button>
+
+                                    <input
+                                        type="tel"
+                                        value={phone}
+                                        onChange={(e) =>
+                                            setPhone(e.target.value)
+                                        }
+                                        placeholder={phonePlaceholder}
+                                        className="ml-2 w-full border-0 bg-transparent font-poppins text-sm text-[#000000] outline-none placeholder:text-[#b4b4b4]"
+                                    />
+                                </div>
+
+                                {countryOpen && (
+                                    <div
+                                        className={`absolute left-0 z-50 w-full overflow-hidden rounded-lg border border-[#dddddd] bg-white shadow-[0_8px_25px_rgba(0,0,0,0.12)] ${
+                                            menuDirection === "up"
+                                                ? "bottom-[72px]"
+                                                : "top-[72px]"
+                                        }`}
+                                    >
+                                        <div
+                                            ref={countryListRef}
+                                            style={{
+                                                maxHeight: `${menuHeight}px`,
+                                            }}
+                                            className="overflow-y-auto"
+                                        >
+                                            {countries.map((countryCode) => {
+                                                const Flag =
+                                                    flags[countryCode];
+
+                                                const isSelected =
+                                                    country === countryCode;
+
+                                                return (
+                                                    <button
+                                                        key={countryCode}
+                                                        type="button"
+                                                        onClick={() =>
+                                                            handleCountrySelect(
+                                                                countryCode
+                                                            )
+                                                        }
+                                                        className={`flex w-full cursor-pointer items-center gap-3 px-4 py-1 text-left transition-colors duration-200 ${
+                                                            isSelected
+                                                                ? "bg-gray-100"
+                                                                : "bg-white hover:bg-gray-100"
+                                                        }`}
+                                                    >
+                                                        <span className="flex h-4.5 w-5.5 shrink-0 items-center justify-center overflow-hidden">
+                                                            {Flag && (
+                                                                <Flag
+                                                                    title={
+                                                                        en[
+                                                                            countryCode
+                                                                        ]
+                                                                    }
+                                                                    className="h-full w-full"
+                                                                />
+                                                            )}
+                                                        </span>
+
+                                                        <span className="flex items-center gap-1 font-poppins text-[14px] text-[#222222]">
+                                                            <span>
+                                                                {
+                                                                    en[
+                                                                        countryCode
+                                                                    ]
+                                                                }
+                                                            </span>
+
+                                                            <span className="text-[13px] text-[#777777]">
+                                                                (+
+                                                                {getCountryCallingCode(
+                                                                    countryCode
+                                                                )}
+                                                                )
+                                                            </span>
+                                                        </span>
+
+                                                        {isSelected && (
+                                                            <span className="ml-auto flex h-4.5 w-4.5 items-center justify-center rounded-full bg-[#54595f] text-[12px] text-white">
+                                                                ✓
+                                                            </span>
+                                                        )}
+                                                    </button>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            <button
+                                type="submit"
+                                className="w-full min-w-[200px] rounded-full bg-[#000099] px-8 py-3 font-poppins text-[14px] font-semibold text-white transition-all duration-300 hover:bg-[#b2ff66] hover:text-[#000099] sm:w-auto"
+                            >
+                                Submit
+                            </button>
+                        </div>
+
+                        <div className="w-full lg:max-w-[480px]">
+                            <div className="mb-8">
+                                <div className="flex">
+                                    <h1 className="font-poppins text-[15px] font-medium text-[#000000]">
+                                        Message
+                                    </h1>
+
+                                    <p className="text-red-500">*</p>
+                                </div>
+
+                                <textarea
+                                    className="mt-2 min-h-[130px] w-full resize-y border-b-2 border-[#c9c9c9] bg-transparent py-1 outline-none"
+                                    placeholder="Let's create something amazing together-send us your project details, and we'll get back to you within 24 hours."
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="mt-20 w-full px-6 sm:mt-25 sm:px-10 lg:px-4 xl:px-26 2xl:px-50">
+                <div className="w-full rounded-3xl bg-[#000099] px-6 py-14 text-center sm:px-10 sm:py-16 lg:px-20 xl:px-30 2xl:px-50">
+                    <h1 className="font-baumans text-[16px] font-bold text-[#ffffff]">
+                        Get Started Today
+                    </h1>
+
+                    <h1 className="mx-auto mt-3 max-w-[900px] text-[30px] font-baumans font-bold leading-tight text-[#ececec] sm:text-[36px] lg:text-[40px]">
+                        Ready to Grow Your Business Online in Coimbatore?
+                    </h1>
+
+                    <p className="mx-auto max-w-[750px] pt-4 text-[14px] font-medium font-poppins leading-6 text-[#ececec] sm:text-[15px]">
+                        Talk to our web development experts for a FREE
+                        consultation — no strings attached. We'll help you plan
+                        the perfect website for your business.
+                    </p>
+
+                    <Link
+                        href="/contact"
+                        className="group mx-auto mt-10 flex w-full max-w-[220px] items-center justify-center gap-3 rounded-full bg-[#b2ff66] px-3 py-2 text-[13px] font-poppins font-semibold text-[#000099] transition-all duration-200 hover:scale-105 hover:bg-white hover:text-[#000099]"
+                    >
+                        <span className="ps-2">
+                            Get Free Consultation
+                        </span>
+
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#000099] text-gray-200 transition-all duration-200 group-hover:bg-[#000099] group-hover:text-white">
+                            <ArrowUpRight size={21} />
+                        </span>
+                    </Link>
+                </div>
+            </div>
+        </section>
+    );
 }
 
 export default AboutUsGetInTouch;

@@ -50,7 +50,7 @@ function IndustriesOurProcess() {
     const [processOpen, setProcessOpen] = useState(0);
 
     return (
-        <section className="pt-20">
+        <section className="w-full overflow-hidden px-6 pt-20 sm:px-10 lg:px-4 xl:px-26 2xl:px-50">
 
             <div className="text-center">
 
@@ -58,7 +58,7 @@ function IndustriesOurProcess() {
                     Our Process
                 </p>
 
-                <h1 className="mx-auto m-4 w-full max-w-[350px] text-[#000000] font-bold font-baumans text-[40px] leading-tight sm:max-w-[700px] md:max-w-[450px] lg:max-w-[750px]">
+                <h1 className="mx-auto m-4 w-full max-w-[350px] text-[40px] font-bold font-baumans leading-tight text-[#000000] sm:max-w-[700px] md:max-w-[500px] lg:max-w-[750px]">
                     A Clear, Proven process for building{" "}
                     <span className="text-[#000099]">
                         Powerful Industry
@@ -66,7 +66,7 @@ function IndustriesOurProcess() {
                     Solutions
                 </h1>
 
-                <div className="relative mx-50 mt-20 flex justify-between border-b-2 border-b-gray-300">
+                <div className="mx-auto mt-20 grid w-full grid-cols-2 border-b-2 border-gray-300 lg:grid-cols-4">
 
                     {process.map((items, id) => (
 
@@ -74,12 +74,14 @@ function IndustriesOurProcess() {
                             key={id}
                             onClick={() => setProcessOpen(id)}
                             className={`
-                                cursor-pointer
+                                min-w-0 cursor-pointer
                                 border-b-3
-                                pb-8
-                                px-10
+                                px-2 py-5
                                 transition-all
                                 duration-300
+                                sm:px-5 sm:py-6
+                                lg:px-3
+                                xl:px-5
                                 ${
                                     processOpen === id
                                         ? "border-[#000099] text-[#000099]"
@@ -88,11 +90,11 @@ function IndustriesOurProcess() {
                             `}
                         >
 
-                            <h1 className="text-[35px] font-bold">
+                            <h1 className="text-[30px] font-bold sm:text-[35px]">
                                 {id + 1}
                             </h1>
 
-                            <h1 className="pt-4 text-[22px] font-baumans font-bold">
+                            <h1 className="pt-3 text-[17px] font-baumans font-bold sm:text-[20px] lg:text-[22px]">
                                 {items.name}
                             </h1>
 
@@ -102,7 +104,7 @@ function IndustriesOurProcess() {
 
                 </div>
 
-                <div className="w-full px-60 py-15 text-start">
+                <div className="w-full py-15 text-start">
 
                     {process.map((item, id) => (
 
@@ -110,44 +112,44 @@ function IndustriesOurProcess() {
 
                             <div
                                 key={id}
-                                className="flex items-center justify-between gap-8"
+                                className="flex w-full flex-col items-center justify-between gap-10 lg:flex-row lg:gap-12"
                             >
 
-                                <div className="max-w-[500px]">
+                                <div className="w-full max-w-[500px]">
 
                                     <h1 className="text-[16px] font-baumans font-bold text-[#000099]">
                                         ({item.stepNo})
                                     </h1>
 
-                                    <h1 className="pt-3 text-[24px] font-baumans text-[#000000] font-bold">
+                                    <h1 className="pt-3 text-[24px] font-baumans font-bold text-[#000000]">
                                         {item.name}
                                     </h1>
 
-                                    <p className="pt-5 font-medium font-poppins text-[15px] text-[#54595F]">
+                                    <p className="pt-5 text-[14px] font-medium font-poppins leading-6 text-[#54595F] sm:text-[15px]">
                                         {item.flow}
                                     </p>
 
                                     <hr className="mt-3 text-gray-200" />
 
-                                    <div className="pt-2 font-medium font-poppins text-[15px] text-[#54595F]">
+                                    <div className="pt-2 text-[14px] font-medium font-poppins text-[#54595F] sm:text-[15px]">
 
-                                        <div className="flex items-center gap-3">
-                                            <span className="h-1 w-1 rounded-full bg-[#54595F]"></span>
+                                        <div className="flex items-start gap-3">
+                                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#54595F]"></span>
                                             <span>{item.point1}</span>
                                         </div>
 
-                                        <div className="flex items-center gap-3 pt-1">
-                                            <span className="h-1 w-1 rounded-full bg-[#54595F]"></span>
+                                        <div className="flex items-start gap-3 pt-1">
+                                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#54595F]"></span>
                                             <span>{item.point2}</span>
                                         </div>
 
-                                        <div className="flex items-center gap-3 pt-1">
-                                            <span className="h-1 w-1 rounded-full bg-[#54595F]"></span>
+                                        <div className="flex items-start gap-3 pt-1">
+                                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#54595F]"></span>
                                             <span>{item.point3}</span>
                                         </div>
 
-                                        <div className="flex items-center gap-3 pt-1">
-                                            <span className="h-1 w-1 rounded-full bg-[#54595F]"></span>
+                                        <div className="flex items-start gap-3 pt-1">
+                                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#54595F]"></span>
                                             <span>{item.point4}</span>
                                         </div>
 
@@ -155,12 +157,14 @@ function IndustriesOurProcess() {
 
                                 </div>
 
-                                <div>
+                                <div className="w-full min-w-0 lg:w-1/2">
+
                                     <img
                                         src={item.img}
                                         alt={item.name}
-                                        className="w-130 rounded-2xl"
+                                        className="block h-auto w-full rounded-2xl object-cover"
                                     />
+
                                 </div>
 
                             </div>

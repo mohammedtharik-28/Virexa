@@ -8,7 +8,7 @@ import {
 
 function OurSolution() {
     return (
-        <section className="px-8 pt-[100px] pb-20 lg:px-20 lg:pt-[120px] sm:pt-[140px] xl:px-50">
+        <section className="px-6 pt-[100px] pb-20 sm:px-10 sm:pt-[120px] lg:px-12 lg:pt-[120px] xl:px-30">
 
             <div className="flex flex-col items-center text-center">
 
@@ -18,7 +18,7 @@ function OurSolution() {
                         Great software changes everything
                     </p>
 
-                    <h1 className="mx-auto m-4 w-full max-w-[350px] text-[40px] text-[#000000] font-baumans font-bold leading-tight md:max-w-[450px] lg:max-w-[680px] sm:max-w-[700px]">
+                    <h1 className="mx-auto m-4 w-full max-w-[350px] text-[40px] text-[#000000] font-baumans font-bold leading-tight sm:max-w-[500px] md:max-w-[600px] lg:max-w-[680px]">
                         Transforming{" "}
                         <span className="text-[#000099]">
                             technology solutions
@@ -35,7 +35,6 @@ function OurSolution() {
                         href="/about"
                         className="group mx-auto mt-10 flex w-full max-w-[170px] items-center justify-center gap-3 rounded-full bg-[#000099] px-3 py-2 text-[13px] font-semibold font-poppins text-gray-200 transition-all duration-200 hover:scale-105 hover:bg-[#b2ff66] hover:text-[#000099]"
                     >
-
                         <span className="ps-2">
                             Learn More Us
                         </span>
@@ -43,7 +42,6 @@ function OurSolution() {
                         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 text-[#000099] transition-all duration-200 group-hover:bg-[#000099] group-hover:text-white">
                             <ArrowUpRight size={21} />
                         </span>
-
                     </Link>
 
                 </div>
@@ -52,9 +50,9 @@ function OurSolution() {
 
             <hr className="mt-15 text-gray-200" />
 
-            <div className="flex text-center pt-20 justify-evenly">
+            <div className="grid grid-cols-1 gap-14 pt-20 text-center sm:grid-cols-2 lg:grid-cols-3 lg:gap-10 lg:pt-20 xl:gap-20">
 
-                <div className="max-w-[330px]">
+                <div className="mx-auto w-full max-w-[330px]">
 
                     <UsersRound
                         size={48}
@@ -66,13 +64,13 @@ function OurSolution() {
                         Dedicated Product Team
                     </h1>
 
-                    <p className="font-medium text-[15px] font-poppins text-[#54595F] pt-5">
+                    <p className="pt-5 font-medium text-[15px] font-poppins text-[#54595F]">
                         You work with engineers and designers who think like product owners. Clear communication. Structured execution. Zero guesswork.
                     </p>
 
                 </div>
 
-                <div className="max-w-[330px]">
+                <div className="mx-auto w-full max-w-[330px]">
 
                     <PenTool
                         size={48}
@@ -84,13 +82,13 @@ function OurSolution() {
                         High-Impact UI UX Design
                     </h1>
 
-                    <p className="font-medium text-[15px] font-poppins text-[#54595F] pt-5">
+                    <p className="pt-5 font-medium text-[15px] font-poppins text-[#54595F]">
                         Good design is not decoration. It drives adoption. We design intuitive, conversion-focused interfaces that users understand instantly.
                     </p>
 
                 </div>
 
-                <div className="max-w-[330px]">
+                <div className="mx-auto w-full max-w-[330px]">
 
                     <FileClock
                         size={48}
@@ -102,7 +100,7 @@ function OurSolution() {
                         Fast, Disciplined Delivery
                     </h1>
 
-                    <p className="font-medium text-[15px] font-poppins text-[#54595F] pt-5">
+                    <p className="pt-5 font-medium text-[15px] font-poppins text-[#54595F]">
                         We move fast, but with structure. Agile sprints, transparent timelines, and production-ready code from day one.
                     </p>
 

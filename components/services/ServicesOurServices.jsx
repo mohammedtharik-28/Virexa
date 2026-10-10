@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import {
     ArrowUpRight,
     BrainCircuit,
@@ -201,17 +202,17 @@ function servicesOurServices() {
     ];
 
     return (
-        <section className="bg-gray-100 px-8 pb-20 pt-[170px] sm:pt-[140px] mt-15 lg:px-20 lg:pt-[100px] xl:px-50">
+        <section className="mt-15 w-full bg-gray-100 px-6 pb-20 pt-[170px] sm:px-10 sm:pt-[140px] lg:px-4 lg:pt-[100px] xl:px-26 2xl:px-50">
 
             <div className="flex flex-col items-center text-center">
 
-                <div>
+                <div className="w-full">
 
                     <p className="font-bold text-[16px] font-baumans text-[#000099] lg:text-base">
                         Our Services
                     </p>
 
-                    <h1 className="mx-auto m-4 w-full max-w-[350px] text-[#000000] text-[40px] font-baumans font-bold leading-tight sm:max-w-[700px] md:max-w-[450px] lg:max-w-[650px]">
+                    <h1 className="mx-auto m-4 w-full max-w-[350px] text-[40px] font-baumans font-bold leading-tight text-[#000000] sm:max-w-[700px] md:max-w-[450px] lg:max-w-[650px]">
                         Building{" "}
                         <span className="text-[#000099]">
                             engineering
@@ -233,7 +234,7 @@ function servicesOurServices() {
                         return (
                             <div
                                 key={id}
-                                className="w-full rounded-2xl bg-gray-200 p-10 text-start"
+                                className="w-full min-w-0 rounded-2xl bg-gray-200 p-6 text-start sm:p-8 lg:p-10"
                             >
 
                                 <div>
@@ -244,41 +245,48 @@ function servicesOurServices() {
                                         className="text-[#000099]"
                                     />
 
-                                    <h1 className="pt-4 text-[24px] font-baumans text-[#000000] font-bold">
+                                    <h1 className="pt-4 text-[22px] font-baumans font-bold text-[#000000] sm:text-[24px]">
                                         {item.title}
                                     </h1>
 
-                                    <p className="pt-5 font-medium font-poppins text-[15px] text-[#54595F]">
+                                    <p className="pt-5 text-[14px] font-medium font-poppins leading-6 text-[#54595F] sm:text-[15px]">
                                         {item.description}
                                     </p>
 
                                 </div>
 
-                                <div className="pt-5 font-medium font-poppins text-[15px] text-[#54595f]">
+                                <div className="pt-5 text-[14px] font-medium font-poppins text-[#54595f] sm:text-[15px]">
 
                                     {item.points.map((point, index) => (
+
                                         <div
                                             key={index}
-                                            className="flex items-center gap-3 pt-3 first:pt-0"
+                                            className="flex items-start gap-3 pt-3 first:pt-0"
                                         >
 
-                                            <span className="h-2 w-2 rounded-full bg-[#54595f]"></span>
+                                            <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#54595f]"></span>
 
-                                            <span>
+                                            <span className="min-w-0">
                                                 {point}
                                             </span>
 
                                         </div>
+
                                     ))}
 
                                 </div>
 
-                                <ul className="flex flex-wrap gap-3 pt-5 text-[14px] font-poppins font-medium text-[#000099]">
+                                <ul className="flex flex-wrap gap-3 pt-5 text-[13px] font-poppins font-medium text-[#000099] sm:text-[14px]">
 
                                     {item.technologies.map((technology, index) => (
-                                        <li key={index}>
+
+                                        <li
+                                            key={index}
+                                            className="break-words"
+                                        >
                                             {technology}
                                         </li>
+
                                     ))}
 
                                 </ul>

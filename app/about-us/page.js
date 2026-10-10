@@ -1,5 +1,6 @@
 import AboutUsGetInTouch from "@/components/aboutUs/AboutUsGetInTouch";
 import AboutUsHero from "@/components/aboutUs/AboutUsHero";
+import AboutUsInfo from "@/components/aboutUs/AboutUsInfo";
 import AboutUsSolutions from "@/components/aboutUs/AboutUsSolutions";
 import AboutUsVirexaAdvantage from "@/components/aboutUs/AboutUsVirexaAdvantage";
 import AboutUsVirexaApproach from "@/components/aboutUs/AboutUsVirexaApproach";
@@ -14,6 +15,7 @@ export default function services(){
         <Navbar/>
         <AboutUsHero/>
         <AboutUsSolutions/>
+        <AboutUsInfo/>
         <AboutUsVirexaApproach/>
         <Founder/>
         <AboutUsVirexaAdvantage/>

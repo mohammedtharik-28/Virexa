@@ -62,7 +62,7 @@ function Sector() {
     ];
 
     return (
-        <section className="px-6 pb-20 pt-40 lg:px-20 xl:px-50">
+        <section className="px-6 pb-20 pt-32 sm:px-10 sm:pt-36 lg:px-20 lg:pt-40 xl:px-26">
 
             <div className="text-center">
 
@@ -70,7 +70,7 @@ function Sector() {
                     Build for Every Sector
                 </p>
 
-                <h1 className="mx-auto mt-4 max-w-[700px] text-[40px] font-baumans text-[#000000] font-bold leading-tight">
+                <h1 className="mx-auto mt-4 w-full max-w-[700px] text-[36px] font-baumans font-bold leading-tight text-[#000000] sm:text-[40px]">
                     Proven across{" "}
                     <span className="text-[#000099]">
                         industries.
@@ -83,8 +83,7 @@ function Sector() {
 
             </div>
 
-
-            <div className="mx-auto mt-16 grid max-w-[1200px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+            <div className="mx-auto mt-12 grid w-full max-w-[1200px] grid-cols-1 md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
 
                 {sectors.map((sector, index) => {
 
@@ -93,13 +92,12 @@ function Sector() {
                     return (
                         <div
                             key={index}
-                            className="flex min-h-[280px] flex-col items-center justify-center border border-gray-200 p-8 text-center transition-all duration-300 hover:bg-[#d0eaf8]"
+                            className="flex min-h-[280px] w-full flex-col items-center justify-center border border-gray-200 p-6 text-center transition-all duration-300 hover:bg-[#d0eaf8] sm:p-8"
                         >
 
                             <div className={`mb-5 flex h-12 w-12 items-center justify-center rounded-lg ${sector.iconBg} ${sector.iconColor}`}>
                                 <Icon size={30} />
                             </div>
-
 
                             <h2 className="text-[17px] font-baumans font-semibold text-[#54595f]">
                                 {sector.title}
@@ -115,14 +113,15 @@ function Sector() {
 
             </div>
 
-            <div className="flex text-center justify-center w-full">
-                <div className=" border py-10 ps-40 pe-10 border-r-transparent border-gray-200 hover:bg-[#d0eaf8]">
+            <div className="mx-auto flex w-full max-w-[1200px] flex-col text-center lg:flex-row">
 
-                    <div className="mb-5 flex h-12 w-12 ms-35 items-center justify-center rounded-lg bg-[#fff8c9] text-yellow-500">
+                <div className="flex w-full flex-col items-center border border-gray-200 px-6 py-10 transition-all duration-300 hover:bg-[#d0eaf8] sm:px-10 lg:border-r-transparent lg:px-10 xl:px-20">
+
+                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-[#fff8c9] text-yellow-500">
                         <FaBolt size={30} />
                     </div>
 
-                    <h1 className="text-[17px] font-baumans font-semibold text-[#54595f] ">
+                    <h1 className="text-[17px] font-baumans font-semibold text-[#54595f]">
                         On-Demand Solutions
                     </h1>
 
@@ -132,9 +131,9 @@ function Sector() {
 
                 </div>
 
-                <div className=" border py-10 ps-10 pe-40 border-gray-200 hover:bg-[#d0eaf8]">
+                <div className="flex w-full flex-col items-center border border-gray-200 px-6 py-10 transition-all duration-300 hover:bg-[#d0eaf8] sm:px-10 lg:px-10 xl:px-20">
 
-                    <div className="mb-5 flex h-12 w-12 ms-35 items-center justify-center rounded-lg bg-[#d8f9fc] text-cyan-600">
+                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-[#d8f9fc] text-cyan-600">
                         <FaCar size={30} />
                     </div>
 
@@ -147,7 +146,9 @@ function Sector() {
                     </p>
 
                 </div>
+
             </div>
+
         </section>
     );
 }

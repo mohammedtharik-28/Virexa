@@ -1,17 +1,17 @@
 import Link from "next/link";
-import {ArrowUpRight}  from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 function CareersHero() {
     return (
-        <section className="px-30 pt-50 pb-36 relative z-10 ">
+        <section className="relative z-10 w-full overflow-hidden px-6 pt-[170px] pb-36 sm:px-10 sm:pt-[140px] lg:px-4 lg:pt-[220px] xl:px-26 2xl:px-50">
+
             <div className="text-center">
 
                 <p className="font-bold text-[16px] font-baumans text-[#000099] lg:text-base">
                     Careers at Virexa
                 </p>
 
-
-                <h1 className="mx-auto m-4 w-full max-w-[350px] text-[48px] text-[#000000] font-baumans font-bold leading-tight md:max-w-[450px] lg:max-w-[600px] sm:max-w-[700px] ">
+                <h1 className="mx-auto mt-4 w-full max-w-[350px] text-[40px] text-[#000000] font-baumans font-bold leading-tight sm:max-w-[700px] sm:text-[44px] lg:max-w-[600px] lg:text-[48px]">
                     Come Build Your Career at Virexa
                 </h1>
 
@@ -29,8 +29,9 @@ function CareersHero() {
                 </Link>
 
             </div>
+
         </section>
-    )
+    );
 }
 
 export default CareersHero;

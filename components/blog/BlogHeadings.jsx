@@ -68,9 +68,9 @@ function BlogPage() {
     };
 
     return (
-        <section className="px-6 pb-20 pt-10 sm:px-10 lg:px-20 xl:px-30">
+        <section className="w-full overflow-hidden px-6 pb-20 pt-10 sm:px-10 lg:px-4 xl:px-26 2xl:px-50">
 
-            <div className="mx-auto max-w-[1200px]">
+            <div className="w-full">
 
                 <div className="mt-16 flex flex-col gap-6">
 
@@ -79,12 +79,12 @@ function BlogPage() {
                         <Link
                             href={blog.link}
                             key={index}
-                            className="group block overflow-hidden rounded-md border-none hover:shadow-md"
+                            className="group block w-full overflow-hidden rounded-md border-none transition-all duration-300 hover:shadow-md"
                         >
 
-                            <div className="grid grid-cols-1 lg:grid-cols-2">
+                            <div className="grid w-full grid-cols-1 lg:grid-cols-2">
 
-                                <div className="relative min-h-[300px] w-full overflow-hidden lg:min-h-[320px]">
+                                <div className="relative min-h-[240px] w-full overflow-hidden sm:min-h-[280px] lg:min-h-[320px]">
 
                                     <Image
                                         src={blog.image}
@@ -95,7 +95,7 @@ function BlogPage() {
 
                                 </div>
 
-                                <div className="flex flex-col justify-center px-7 py-8 lg:px-14">
+                                <div className="flex min-w-0 flex-col justify-center px-3 py-5 sm:px-7 sm:py-8 lg:px-10 xl:px-14">
 
                                     <div>
 
@@ -105,17 +105,17 @@ function BlogPage() {
 
                                     </div>
 
-                                    <h2 className="mt-5 font-baumans text-[30px] font-bold leading-tight text-[#000000] lg:text-[34px]">
+                                    <h2 className="mt-5 text-[26px] font-baumans font-bold leading-tight text-[#000000] sm:text-[30px] lg:text-[34px]">
                                         {blog.title}
                                     </h2>
 
-                                    <p className="mt-4 max-w-[550px] font-poppins text-[14px] font-medium leading-6 text-[#54595f]">
+                                    <p className="mt-4 w-full max-w-[550px] text-[14px] font-medium font-poppins leading-6 text-[#54595f] sm:text-[15px]">
                                         {blog.description}
                                     </p>
 
                                     <div className="mt-6 flex items-center gap-3">
 
-                                        <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-[#e5e5e5]">
+                                        <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#e5e5e5]">
 
                                             <span className="font-poppins text-[14px] font-semibold text-[#777777]">
                                                 {blog.author.charAt(0)}

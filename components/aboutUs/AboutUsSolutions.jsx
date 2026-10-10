@@ -9,7 +9,7 @@ import {
     FaHeadset,
 } from "react-icons/fa6";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function AboutUsSolutions() {
 
@@ -56,17 +56,60 @@ function AboutUsSolutions() {
     ];
 
     const [activeTab, setActiveTab] = useState(0);
+    const [count, setCount] = useState(0);
+    const [hasStarted, setHasStarted] = useState(false);
+    const counterRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting && !hasStarted) {
+                    setHasStarted(true);
+                }
+            },
+            {
+                threshold: 0.5,
+            }
+        );
+
+        if (counterRef.current) {
+            observer.observe(counterRef.current);
+        }
+
+        return () => {
+            if (counterRef.current) {
+                observer.unobserve(counterRef.current);
+            }
+        };
+    }, [hasStarted]);
+
+    useEffect(() => {
+        if (!hasStarted) return;
+
+        let current = 0;
+
+        const interval = setInterval(() => {
+            current += 1;
+            setCount(current);
+
+            if (current >= 9) {
+                clearInterval(interval);
+            }
+        }, 50);
+
+        return () => clearInterval(interval);
+    }, [hasStarted]);
 
     return (
-        <section className="px-28">
+        <section className="w-full overflow-hidden px-6 py-20 sm:px-10 lg:px-4 xl:px-26 2xl:px-50">
 
-            <div className="flex justify-between">
+            <div className="flex w-full flex-col gap-12 lg:flex-row lg:justify-between lg:gap-16">
 
-                <div>
+                <div className="w-full lg:w-[60%]">
 
                     <div>
 
-                        <h1 className="mt-4 w-full max-w-[350px] text-[40px] text-[#000000] font-baumans font-bold leading-tight md:max-w-[450px] lg:max-w-[650px] sm:max-w-[700px]">
+                        <h1 className="mt-4 w-full max-w-[650px] text-[36px] text-[#000000] font-baumans font-bold leading-tight sm:text-[40px]">
                             Transforming{" "}
                             <span className="text-[#000099]">
                                 ideas
@@ -77,66 +120,68 @@ function AboutUsSolutions() {
                             </span>
                         </h1>
 
-                        <p className="mx-auto m-3 w-full max-w-[700px] text-base font-medium text-[15px] font-poppins leading-6 text-gray-600">
+                        <p className="mt-5 w-full max-w-[700px] text-[14px] font-medium font-poppins leading-6 text-gray-600 sm:text-[15px]">
                             We specialize in delivering innovative IT solutions empower businesses to thrive in the digital age. From cloud computing and software development cybersecurity and data analytics.
                         </p>
 
                     </div>
 
-                    <div className="flex ms-5">
+                    <div className="mt-8 flex w-full flex-col gap-8 sm:flex-row sm:items-start sm:gap-8 lg:ms-5">
 
-                        <div>
+                        <div className="w-full sm:w-[40%]">
 
                             <img
-                                className="w-70 h-100 object-cover rounded-3xl mt-10"
+                                className="h-[400px] w-full rounded-3xl object-cover sm:h-[450px]"
                                 src="/AboutUsImage/AboutUsImage2.webp"
                                 alt=""
                             />
 
                         </div>
 
-                        <div className="pt-20 ps-8 max-w-[400px] text-start">
+                        <div className="w-full pt-0 text-start sm:w-[60%] sm:pt-10 lg:pt-20">
 
-                            <div className="flex gap-8">
+                            <div className="flex gap-6 sm:gap-8">
 
-                                <h1
+                                <button
                                     onClick={() => setActiveTab(0)}
-                                    className={`cursor-pointer font-baumans font-bold text-[16px] ${activeTab === 0
-                                        ? "text-[#000099] border-b-2"
-                                        : "text-[#000000]"
-                                        }`}
+                                    className={`cursor-pointer font-baumans font-bold text-[16px] ${
+                                        activeTab === 0
+                                            ? "border-b-2 border-[#000099] text-[#000099]"
+                                            : "text-[#000000]"
+                                    }`}
                                 >
                                     Who We Are
-                                </h1>
+                                </button>
 
-                                <h1
+                                <button
                                     onClick={() => setActiveTab(1)}
-                                    className={`cursor-pointer font-baumans font-bold text-[16px] ${activeTab === 1
-                                        ? "text-[#000099] border-b-2"
-                                        : "text-[#000000]"
-                                        }`}
+                                    className={`cursor-pointer font-baumans font-bold text-[16px] ${
+                                        activeTab === 1
+                                            ? "border-b-2 border-[#000099] text-[#000099]"
+                                            : "text-[#000000]"
+                                    }`}
                                 >
                                     Our Goals
-                                </h1>
+                                </button>
 
                             </div>
 
-                            <div className="pt-5 font-medium font-poppins text-[15px] text-[#54595f]">
+                            <div className="pt-5 text-[14px] font-medium font-poppins leading-6 text-[#54595f] sm:text-[15px]">
 
                                 <p>
                                     {AboutUsPoints[activeTab].description}
                                 </p>
 
-                                <div className="pt-5 font-medium font-poppins text-[15px] text-[#54595f]">
+                                <div className="pt-5">
 
                                     {AboutUsPoints[activeTab].point.map((point, index) => (
 
                                         <div
                                             key={index}
-                                            className="flex items-center gap-3 pt-3 first:pt-0"
+                                            className="flex items-start gap-3 pt-3 first:pt-0"
                                         >
 
-                                            <span className="h-2 w-2 rounded-full bg-[#54595f]"></span>
+                                            <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#54595f]"></span>
 
                                             <span>
                                                 {point}
@@ -171,25 +216,28 @@ function AboutUsSolutions() {
 
                 </div>
 
-                <div>
+                <div className="w-full lg:w-[35%]">
 
-                    <div>
+                    <div className="w-full">
 
                         <img
-                            className="w-90 h-120 object-cover rounded-3xl"
+                            className="h-[400px] w-full rounded-3xl object-cover sm:h-[500px] lg:h-[480px]"
                             src="/AboutUsImage/AboutUsImage1.webp"
                             alt="AboutUsImage"
                         />
 
                     </div>
 
-                    <div className="bg-[#000099] flex items-center gap-5 rounded-4xl max-w-[360px] mt-5 py-8 px-6">
+                    <div className="mt-5 flex w-full max-w-[360px] items-center gap-5 rounded-4xl bg-[#000099] px-6 py-8">
 
-                        <h1 className="font-baumans font-bold text-[56px] text-[#ececec]">
-                            9+
+                        <h1
+                            ref={counterRef}
+                            className="shrink-0 font-baumans text-[48px] font-bold text-[#ececec] sm:text-[56px]"
+                        >
+                            {count}+
                         </h1>
 
-                        <p className="font-baumans font-bold text-[20px] text-[#ececec]">
+                        <p className="font-baumans text-[18px] font-bold text-[#ececec] sm:text-[20px]">
                             Years of experience in IT Solutions
                         </p>
 
@@ -199,9 +247,9 @@ function AboutUsSolutions() {
 
             </div>
 
-            <hr className="mt-30 text-[#ececec]" />
+            <hr className="mt-20 text-[#ececec] lg:mt-30" />
 
-            <div className="flex justify-between mt-20">
+            <div className="mt-16 grid w-full grid-cols-1 gap-12 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-10">
 
                 {AboutUs.map((items, id) => {
 
@@ -209,26 +257,25 @@ function AboutUsSolutions() {
 
                     return (
                         <div
-                            className="max-w-[250px]"
+                            className="w-full max-w-[250px]"
                             key={id}
                         >
 
                             <Icon
                                 size={48}
-                                className="text-[#000099] mb-8"
+                                className="mb-8 text-[#000099]"
                             />
 
-                            <h1 className="font-baumans font-bold text-[24px] text-[#000000]">
+                            <h1 className="font-baumans text-[22px] font-bold text-[#000000] sm:text-[24px]">
                                 {items.title}
                             </h1>
 
-                            <p className="font-poppins font-medium text-[15px] text-[#54595f] mt-5">
+                            <p className="mt-5 font-poppins text-[14px] font-medium leading-6 text-[#54595f] sm:text-[15px]">
                                 {items.description}
                             </p>
 
                         </div>
                     );
-
                 })}
 
             </div>

@@ -7,7 +7,6 @@ import {
     FaThreads
 } from "react-icons/fa6";
 
-
 function Footer() {
     const services = [
         {
@@ -79,11 +78,11 @@ function Footer() {
     ];
 
     return (
-        <footer className="bg-gray-200 px-6 py-16 lg:px-50">
+        <footer className="bg-gray-200 px-6 py-12 sm:px-10 sm:py-16 lg:px-20 xl:px-30">
 
-            <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 md:grid lg:grid-cols-4">
+            <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
 
-                <div className="max-w-[220px]">
+                <div className="max-w-[280px]">
                     <h2 className="mb-6 text-xl font-bold font-baumans">
                         Services
                     </h2>
@@ -93,7 +92,7 @@ function Footer() {
                             <li key={service.name}>
                                 <Link
                                     href={service.href}
-                                    className="text-[14px] transition-colors duration-200 hover:text-[#000099] font-baumans text-[#54595F] font-normal"
+                                    className="text-[14px] font-baumans font-normal text-[#54595F] transition-colors duration-200 hover:text-[#000099]"
                                 >
                                     {service.name}
                                 </Link>
@@ -102,7 +101,7 @@ function Footer() {
                     </ul>
                 </div>
 
-                <div className="max-w-[220px]">
+                <div className="max-w-[280px]">
                     <h2 className="mb-6 text-xl font-bold font-baumans">
                         Industries
                     </h2>
@@ -112,7 +111,7 @@ function Footer() {
                             <li key={industry.name}>
                                 <Link
                                     href={industry.href}
-                                    className="text-[14px] transition-colors duration-200 hover:text-[#000099] text-[#54595F] font-normal font-baumans"
+                                    className="text-[14px] font-baumans font-normal text-[#54595F] transition-colors duration-200 hover:text-[#000099]"
                                 >
                                     {industry.name}
                                 </Link>
@@ -121,8 +120,7 @@ function Footer() {
                     </ul>
                 </div>
 
-
-                <div className="max-w-[220px]">
+                <div className="max-w-[280px]">
                     <h2 className="mb-6 text-xl font-bold font-baumans">
                         Company
                     </h2>
@@ -132,7 +130,7 @@ function Footer() {
                             <li key={item.name}>
                                 <Link
                                     href={item.href}
-                                    className="text-[14px] transition-colors duration-200 hover:text-[#000099] text-[#54595F] font-normal font-baumans"
+                                    className="text-[14px] font-baumans font-normal text-[#54595F] transition-colors duration-200 hover:text-[#000099]"
                                 >
                                     {item.name}
                                 </Link>
@@ -141,8 +139,7 @@ function Footer() {
                     </ul>
                 </div>
 
-
-                <div className="max-w-[280px]">
+                <div className="max-w-[320px]">
                     <h2 className="mb-8 text-xl font-bold font-baumans">
                         Need Help?
                     </h2>
@@ -150,39 +147,37 @@ function Footer() {
                     <ul className="space-y-[14px]">
 
                         <li>
-                            <p className="text-[10px] font-medium font-poppins text-[#54595F]">
+                            <p className="text-[10px] font-poppins font-medium text-[#54595F]">
                                 CALL US DIRECTLY
                             </p>
 
                             <a
                                 href="tel:+918925826080"
-                                className="text-base font-semibold font-baumans transition-colors duration-200 hover:text-[#000099]"
+                                className="text-base font-baumans font-semibold transition-colors duration-200 hover:text-[#000099]"
                             >
                                 +91 892-582-6080
                             </a>
                         </li>
 
-
                         <li>
-                            <p className="text-[10px] font-normal font-poppins text-[#54595F]">
+                            <p className="text-[10px] font-poppins font-normal text-[#54595F]">
                                 MAIL
                             </p>
 
                             <a
                                 href="mailto:sales@virexa.in"
-                                className="text-base font-semibold font-baumans transition-colors duration-200 hover:text-[#000099]"
+                                className="text-base font-baumans font-semibold transition-colors duration-200 hover:text-[#000099]"
                             >
                                 sales@virexa.in
                             </a>
                         </li>
 
-
                         <li>
-                            <p className="text-[10px] font-medium font-poppins text-[#54595F]">
+                            <p className="text-[10px] font-poppins font-medium text-[#54595F]">
                                 LOCATION
                             </p>
 
-                            <p className="text-base font-semibold font-baumans leading-relaxed wrap-break-word">
+                            <p className="break-words text-base font-baumans font-semibold leading-relaxed">
                                 758/2,759/2A, No 86, 87,
                                 Kovai Thirunagar, South,
                                 Coimbatore, Tamil Nadu 641014
@@ -194,40 +189,80 @@ function Footer() {
 
             </div>
 
-            <div className="flex items-center justify-between pt-20 ">
+            <div className="flex flex-col items-start pt-14 sm:pt-20">
+
                 <Link href="/">
-                    <img src="/Final-virexa.svg" alt="Virexa" className="w-24" />
+                    <img
+                        src="/Final-virexa.svg"
+                        alt="Virexa"
+                        className="w-24"
+                    />
                 </Link>
-                <div className="flex gap-8">
-                    <Link href="/terms&conditions" className="font-medium font-poppins transition-colors text-[#54595F] duration-200 hover:text-[#000099]"><p>Terms & Conditions</p></Link>
-                    <Link href="/privacy-policy" className="font-medium font-poppins transition-colors duration-200 text-[#54595F] hover:text-[#000099]"><p>Privacy Policy</p></Link>
+
+                <div className="mt-5 flex flex-row items-center gap-8">
+
+                    <Link
+                        href="/terms&conditions"
+                        className="font-poppins font-medium text-[#54595F] transition-colors duration-200 hover:text-[#000099]"
+                    >
+                        Terms & Conditions
+                    </Link>
+
+                    <Link
+                        href="/privacy-policy"
+                        className="font-poppins font-medium text-[#54595F] transition-colors duration-200 hover:text-[#000099]"
+                    >
+                        Privacy Policy
+                    </Link>
+
                 </div>
+
             </div>
 
-            <hr className="mt-8 text-gray-400" />
+            <hr className="mt-8 border-gray-400" />
 
-            <div className="flex justify-between pt-10 text-sm font-semibold text-[#54595F]">
-                <div className="font-poppins font-medium">
-                    <p>© 2026 Virexa Technologies Pvt. Ltd. All rights reserved.</p>
+            <div className="flex flex-col items-start gap-8 pt-8 text-sm font-semibold text-[#54595F] lg:flex-row lg:items-start lg:justify-between lg:pt-10">
+
+                <div className="text-left font-poppins font-medium">
+                    <p>
+                        © 2026 Virexa Technologies Pvt. Ltd. All rights reserved.
+                    </p>
                 </div>
-                <div className="flex gap-5">
-                    <Link href="/linkedIn" className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-gray-400 bg-gray-200 text-[#0808a8] transition-all duration-200 hover:scale-110 hover:border-gray-200 hover:bg-[#0808a8] hover:text-white">
+
+                <div className="flex flex-wrap justify-start gap-3 sm:gap-5">
+
+                    <Link
+                        href="/linkedIn"
+                        className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-gray-400 bg-gray-200 text-[#0808a8] transition-all duration-200 hover:scale-110 hover:border-gray-200 hover:bg-[#0808a8] hover:text-white sm:h-12 sm:w-12"
+                    >
                         <FaLinkedinIn size={16} />
                     </Link>
 
-                    <Link href="/linkedIn" className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-gray-400 bg-gray-200 text-[#0808a8] transition-all duration-200 hover:scale-110 hover:border-gray-200 hover:bg-[#0808a8] hover:text-white">
+                    <Link
+                        href="/linkedIn"
+                        className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-gray-400 bg-gray-200 text-[#0808a8] transition-all duration-200 hover:scale-110 hover:border-gray-200 hover:bg-[#0808a8] hover:text-white sm:h-12 sm:w-12"
+                    >
                         <FaFacebookF size={16} />
                     </Link>
 
-                    <Link href="/linkedIn" className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-gray-400 bg-gray-200 text-[#0808a8] transition-all duration-200 hover:scale-110 hover:border-gray-200 hover:bg-[#0808a8] hover:text-white">
+                    <Link
+                        href="/linkedIn"
+                        className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-gray-400 bg-gray-200 text-[#0808a8] transition-all duration-200 hover:scale-110 hover:border-gray-200 hover:bg-[#0808a8] hover:text-white sm:h-12 sm:w-12"
+                    >
                         <FaInstagram size={16} />
                     </Link>
 
-                    <Link href="/linkedIn" className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-gray-400 bg-gray-200 text-[#0808a8] transition-all duration-200 hover:scale-110 hover:border-gray-200 hover:bg-[#0808a8] hover:text-white">
+                    <Link
+                        href="/linkedIn"
+                        className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-gray-400 bg-gray-200 text-[#0808a8] transition-all duration-200 hover:scale-110 hover:border-gray-200 hover:bg-[#0808a8] hover:text-white sm:h-12 sm:w-12"
+                    >
                         <FaThreads size={16} />
                     </Link>
+
                 </div>
+
             </div>
+
         </footer>
     );
 }

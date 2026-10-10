@@ -17,13 +17,37 @@
 }
 
 
+/* Our records */
 
+@keyframes countSlide {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.count-slide {
+    animation: countSlide 0.08s ease-out;
+}
+
+
+/* Testimonials */
 
 .testimonial-track {
     display: flex;
     gap: 40px;
     width: max-content;
-    animation: testimonial-scroll 20s linear infinite;
+}
+
+@media (min-width: 1024px) {
+    .testimonial-track {
+        animation: testimonial-scroll 20s linear infinite;
+    }
 }
 
 @keyframes testimonial-scroll {
@@ -37,6 +61,18 @@
 }
 
 
+/* Hide scrollbar */
+
+.scrollbar-hide {
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Technology */
 
 .Technology1-track {
     animation: technology-left 15s linear infinite;
@@ -64,4 +100,21 @@
     to {
         transform: translateX(0);
     }
+}
+
+/*Industries*/
+
+@keyframes industries {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-industries {
+    animation: industries 45s linear infinite;
+    will-change: transform;
 }
