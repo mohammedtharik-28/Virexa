@@ -147,7 +147,7 @@ function Navbar() {
         },
         {
             name: "Logistics & Distribution",
-            href: "/industries/logistics",
+            href: "/industries/logistics-distribution",
             description:
                 "Scalable technology solutions for smarter logistics and distribution.",
             icon: FaTruck,
@@ -171,7 +171,7 @@ function Navbar() {
         },
         {
             name: "Education & E-Learning",
-            href: "/industries/education",
+            href: "/industries/education-e-learning",
             description:
                 "Digital solutions for modern education and e-learning platforms.",
             icon: FaGraduationCap,

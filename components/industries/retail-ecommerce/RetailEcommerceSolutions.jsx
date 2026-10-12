@@ -81,8 +81,25 @@ function RetailEcommerceSolutions() {
     const selectedSolution = solutions[activeTab];
 
     return (
-        <section className="w-full bg-white px-4 py-12 sm:px-6 lg:px-26">
-            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-16">
+        <section className="w-full bg-white px-4 py-12 sm:px-6 lg:px-30">
+            <div className="flex flex-col items-center text-center">
+                <div className="w-full">
+                    <p className="font-baumans text-[16px] font-bold text-[#000099] lg:text-base">
+                        Solutions We Build
+                    </p>
+
+                    <h1 className="mx-auto m-4 w-full max-w-[350px] pb-2 font-baumans text-[40px] font-bold leading-tight text-[#000000] sm:max-w-[700px] md:max-w-[450px] lg:max-w-[750px]">
+                        Technology Built for{" "}
+                        <span className="text-[#000099]">
+                            Retail & E-Commerce
+                        </span>
+                    </h1>
+                    <p className="font-poppins font-normal text-[14px] text-[#54595f] mx-auto sm:max-w-[700px] md:max-w-[450px] lg:max-w-[730px]">
+                        We build the full stack of technology that modern retail businesses need — from the customer-facing storefront to the backend operations systems that make fulfilment effortless.
+                    </p>
+                </div>
+            </div>
+            <div className="mx-auto grid max-w-7xl grid-cols-1 pt-30 gap-8 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-16">
 
                 <div className="flex flex-col gap-2">
                     {solutions.map((solution, index) => (
@@ -91,11 +108,10 @@ function RetailEcommerceSolutions() {
                             type="button"
                             onClick={() => setActiveTab(index)}
                             aria-pressed={activeTab === index}
-                            className={`w-full rounded-md px-8 py-6 text-left cursor-pointer text-[22px] font-bold font-baumans transition-colors duration-200 ${
-                                activeTab === index
+                            className={`w-full rounded-md px-8 py-6 text-left cursor-pointer text-[22px] font-bold font-baumans transition-colors duration-200 ${activeTab === index
                                     ? "bg-[#f1f0f8] text-[#000099]"
                                     : "bg-transparent text-gray-200 "
-                            }`}
+                                }`}
                         >
                             {solution.tab}
                         </button>

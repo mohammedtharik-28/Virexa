@@ -47,7 +47,7 @@ function RetailEcommerceWhyVirexa() {
                     </p>
 
                     <h1 className="mx-auto m-4 w-full max-w-[350px] pb-2 font-baumans text-[40px] font-bold leading-tight text-[#000000] sm:max-w-[700px] md:max-w-[450px] lg:max-w-[750px]">
-                        Why virexa{" "}
+                        Why E-Commerce Companies{" "}
                         <span className="text-[#000099]">
                             Choose Virexa
                         </span>

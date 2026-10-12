@@ -118,3 +118,71 @@
     animation: industries 45s linear infinite;
     will-change: transform;
 }
+
+
+
+
+
+
+
+@keyframes rotateClockwise {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.timeline-circle {
+    cursor: pointer;
+}
+
+.timeline-circle:hover,
+.timeline-circle:focus-visible {
+    background-color: #1000b5;
+    color: white;
+}
+
+.timeline-dotted-ring {
+    position: absolute;
+    inset: -9px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+        circle,
+        #a3a3b3 1px,
+        transparent 1.3px
+    );
+    background-size: 8px 8px;
+    -webkit-mask: radial-gradient(
+        circle,
+        transparent 0 68%,
+        #000 70% 73%,
+        transparent 75%
+    );
+    mask: radial-gradient(
+        circle,
+        transparent 0 68%,
+        #000 70% 73%,
+        transparent 75%
+    );
+    animation: none;
+    transition: opacity 200ms ease;
+}
+
+.timeline-circle:hover .timeline-dotted-ring,
+.timeline-circle:focus-visible .timeline-dotted-ring {
+    opacity: 1;
+    animation: rotateClockwise 3s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .timeline-circle:hover .timeline-dotted-ring,
+    .timeline-circle:focus-visible .timeline-dotted-ring {
+        animation: none;
+    }
+}
+
